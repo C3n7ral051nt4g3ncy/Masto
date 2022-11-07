@@ -42,7 +42,7 @@ With **Masto OSINT Tool**, you will be able to:
 **This is a nice feature**, if you type ```social.network.europa.eu``` on [Mastodon.social](https://mastodon.social/search) , you won't get a result as the instance is set to ```not discoverable```. <br>
 With this function you will be able to:
 - Get information on an instance
-- Get instance ID
+- Get instance Admin ID
 - Get instance email 
 - Get a short description
 - Get server thumbnail link
