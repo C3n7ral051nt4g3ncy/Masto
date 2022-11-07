@@ -13,6 +13,7 @@ import webbrowser
 import re
 import urllib.request
 import urllib.parse
+from pprint import pprint
 
 print("""\033[35m
 ███╗   ███╗ █████╗ ███████╗████████╗ ██████╗
@@ -143,8 +144,6 @@ def mastodon_search():
     pubkey = data['publicKey']
     fwerslink = data['followers']
     fwinglink = data['following']
-    icon = data['icon']
-    img = data['image']
 
     print("\nprofile url:", proflink)
     print("profile discoverable:", profdisc)
@@ -166,6 +165,7 @@ def mastodon_search():
     print("link to user followers:", fwerslink)
     print("link to accounts user is following:", fwinglink)
 
+
     attachment = ' | '.join([s.get('value') for s in data.get('attachment', [])])
 
     b_tags = ['<p>', '</p>', '</a>', '</span>', '<span>', '<a href', '"', '<', '>', 'class=', 'rel=tag', '=',
@@ -176,8 +176,6 @@ def mastodon_search():
         attachment = attachment.replace(b_tag, '')
     print(f"sites found --> {attachment}")
 
-    print("profile image info:", icon)
-    print("header image info:", img)
 
     tagsurl = f'https://mastodon.social/users/{user}/collections/tags.json'
     resp = requests.request("GET", tagsurl)
@@ -192,7 +190,7 @@ def mstdn_search():
     print("\n\n════════════════════════════════════")
     print("\033[35m\033[1mhttps://mstdn.social\033[0m")
     print("\033[35mSearch for user \033[1mONLY on mstdn.social\033[0m")
-    print("Can provide additional info")
+    print("\033[35mCan provide additional info\033[0m")
     print("════════════════════════════════════")
     print("\nInput username \033[1mWITHOUT the @ symbol\033[0m in front!")
     query = input("\033[1mUsername: \033[0m")
@@ -219,9 +217,6 @@ def mstdn_search():
     pubkey = data['publicKey']
     fwerslink = data['followers']
     fwinglink = data['following']
-    icon = data['icon']
-    img = data['image']
-
 
     print("\nprofile url:", proflink)
     print("profile discoverable:", profdisc)
@@ -253,9 +248,46 @@ def mstdn_search():
         attachment = attachment.replace(b_tag, '')
     print(f"sites found --> {attachment}")
 
-    print("profile image info:", icon)
-    print("header image info:", img)
 
+def instance_search():
+    print("\n\n═══════════════════════════════════════")
+    print("\033[32mFind information \033[1mon instance (server)\033[0m")
+    print("\033[32mExample: social.network.europa.eu\033[0m")
+    print("═══════════════════════════════════════")
+    print("\nInput instance (server) name \033[1mWITHOUT the @ symbol\033[0m in front!")
+    query = input("\033[1mInstance: \033[0m")
+    instance = query
+    url = f'https://{instance}/api/v1/instance'
+    response = requests.request("GET", url)
+    data = json.loads(response.text)
+
+    for _ in tqdm(range(10)):
+        time.sleep(0.03)
+
+    if 'error' in data and data['error'] == 'Not Found':
+        print(f"\n\033[1m\033[31muser [{instance}] NOT found!\033[0m")
+        return
+
+    name = data['uri']
+    print("\ninstance (server): ", name)
+    title = data['title']
+    print("title:", title)
+    descript = data['short_description']
+    print("description: ", descript)
+    e_mail = data['email']
+    print("instance email:", e_mail)
+    thumb = data['thumbnail']
+    print("server thumbnail:", thumb)
+    ilang = data['languages']
+    print("instance languages:", ilang)
+    reg = data['registrations']
+    print("registation needed:", reg)
+    reg_approve = data['approval_required']
+    print("admin approval required:", reg_approve)
+    invites = data['invites_enabled']
+    print("invites enabled on instance:", invites)
+    account_data = data['contact_account']
+    pprint(account_data)
 
 
 def main():
@@ -263,6 +295,7 @@ def main():
     all_servers_search()
     mastodon_search()
     mstdn_search()
+    instance_search()
 
 
 if __name__ == '__main__':
