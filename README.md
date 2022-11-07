@@ -80,7 +80,8 @@ This function helps to:
 
 ## 📝 License
 
-[MIT License](https://opensource.org/licenses/MIT) 
+[MIT License](https://opensource.org/licenses/MIT) <br>
+*Tool made for the OSINT and Cyber community, feel free to contribute code.*
 
 <img width="66" src="https://user-images.githubusercontent.com/104733166/200310377-be6d8187-8366-4968-b730-a5c215b310ec.png">
 
