@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# Code style         : Black
 # Tool name          : Masto
 # File name          : masto.py
 # Author             : C3n7ral051nt4g3ncy(@OSINT_Tactical)
