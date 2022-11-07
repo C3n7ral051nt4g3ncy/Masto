@@ -13,16 +13,18 @@
 
 ## **About Masto**
 
-**Masto provides information/intelligence on Mastodon.social users** 
+**Masto provides information/intelligence on [Mastodon.social](https://mastodon.social) users** 
 <br>
 <br>
-*Keep in mind there is a flaw with Mastodon, the same username can be used across various instances(servers), and this won't prove it's the same person behind each account. This will probably cause **impersonation issues** in the future.*
+The same username can be used across different instances(servers), finding the same username on different instances won't prove it's the same person behind each account. <br>
+This may cause **impersonation issues** in the future, although each instance can only have **one unique username per instance**.<br>
+Example: ```@osint@counter.social```
 
-With **Masto OSINT Tool**, you will be able to:
+**Masto OSINT Tool** helps to:
 - Find user ID
-- Find all accounts belonging to a user without logging in to Mastodon (**Mastodon requires users to log in and after the first 5 results you get**: ```401Search queries pagination is not supported without authentication```
+- Find all (possible) accounts belonging to a user without logging in to Mastodon (**Mastodon requires users to log in and after the first 5 results you get**: ```401 Search queries pagination is not supported without authentication```
 - Find user correlation (can't be found by searching on the Mastodon.social website)
-- check if the user is a bot 
+- Check if the user is a bot 
 - Check if the user has to approve followers manually
 - Check if the account is a group
 - Check if the account is locked
@@ -40,7 +42,8 @@ With **Masto OSINT Tool**, you will be able to:
 
 ## Additional instance (server) feature
 **This is a nice feature**, if you type ```social.network.europa.eu``` on [Mastodon.social](https://mastodon.social/search) , you won't get a result as the instance is set to ```not discoverable```. <br>
-With this function you will be able to:
+
+This function helps to:
 - Get information on an instance
 - Get instance Admin ID
 - Get instance email 
@@ -48,16 +51,16 @@ With this function you will be able to:
 - Get server thumbnail link
 - Get instance creation date 
 - Get instance language used
-- Get instance count of followers and following
-- Get instance last status date
+- Get instance admin count of followers and following
+- Get instance admin last status date
 - Get header image link and avatar link
 - Get instance display name
 - Get admin url
 - Get admin avatar
-- Check if instance account is locked
+- Check if instance admin account is locked
 - Check if invites on the instance are enabled
 - Check if registration is required and if the admin needs to approve the request
-- Check if the instance is a bot 
+- Check if the admin is a bot 
 
 ## 🛠️ Installation
 
@@ -71,9 +74,9 @@ With this function you will be able to:
 
 ## 👥 Testing on known users
 
-- For the 1st function, try: ```Gargron```, the founder of Mastodon.social, this pulls a wopping 11 accounts!!! (*same username doesn't prove 100% the 11 accounts belong to the Mastodon Developper*).
-- For the 2nd function, searching only on mastodon.social, try: ```osint```
-- For the 3rd function, searching only on mstdn.social, try: ```stux```
+- For the 1st function, try: ```Gargron```, the founder of [Mastodon.social](https://mastodon.social), this pulls a wopping 11 accounts!!! (same username doesn't prove the 11 accounts belong to the Mastodon Developper).
+- For the 2nd function, searching only on [Mastodon.social](https://mastodon.social), try: ```osint```
+- For the 3rd function, searching only on [mstdn.social](https://mstdn.social), try: ```stux```
 - For the 4th function, searching for instances, try: ```social.network.europa.eu```
 
 
