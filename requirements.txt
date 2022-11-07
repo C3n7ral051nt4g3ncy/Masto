@@ -1,5 +1,6 @@
 time
 requests
+bs4
 json
 tqdm
 sys
