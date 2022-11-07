@@ -68,7 +68,7 @@ With this function you will be able to:
 - For the 1st function, try: ```Gargron```, the founder of Mastodon.social, this pulls a wopping 11 accounts!!!
 - For the 2nd function, searching only on mastodon.social, try: ```osint```
 - For the 3rd function, searching only on mstdn.social, try: ```stux```
-- for the 4th function, searching for instances, try: ```social.network.europa.eu```
+- For the 4th function, searching for instances, try: ```social.network.europa.eu```
 
 
 ## 📝 License
