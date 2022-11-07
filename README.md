@@ -71,7 +71,7 @@ With this function you will be able to:
 
 ## 👥 Testing on known users
 
-- For the 1st function, try: ```Gargron```, the founder of Mastodon.social, this pulls a wopping 11 accounts!!!
+- For the 1st function, try: ```Gargron```, the founder of Mastodon.social, this pulls a wopping 11 accounts!!! (*same username doesn't prove 100% the 11 accounts belong to the Mastodon Developper*).
 - For the 2nd function, searching only on mastodon.social, try: ```osint```
 - For the 3rd function, searching only on mstdn.social, try: ```stux```
 - For the 4th function, searching for instances, try: ```social.network.europa.eu```
