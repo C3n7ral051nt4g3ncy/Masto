@@ -56,7 +56,7 @@ def all_servers_search():
     for _ in tqdm(range(10)):
         time.sleep(0.06)
 
-    if response.text == ('{"accounts":[],"statuses":[],"hashtags":[]}'):
+    if response.text == '{"accounts":[],"statuses":[],"hashtags":[]}':
         print(f"\n\033[1m\033[31muser [{user}] NOT found!\033[0m")
         print("try below searching only on Mastodon.social")
         return
@@ -114,6 +114,7 @@ def all_servers_search():
         if choice in ["n", "N", "NO", "no"]:
             continue
 
+
 def mastodon_search():
     print("\n\n═══════════════════════════════════════")
     print("\033[34m\033[1mhttps://mastodon.social\033[0m")
@@ -165,7 +166,6 @@ def mastodon_search():
     print("link to user followers:", fwerslink)
     print("link to accounts user is following:", fwinglink)
 
-
     attachment = ' | '.join([s.get('value') for s in data.get('attachment', [])])
 
     b_tags = ['<p>', '</p>', '</a>', '</span>', '<span>', '<a href', '"', '<', '>', 'class=', 'rel=tag', '=',
@@ -175,7 +175,6 @@ def mastodon_search():
     for b_tag in b_tags:
         attachment = attachment.replace(b_tag, '')
     print(f"sites found --> {attachment}")
-
 
     tagsurl = f'https://mastodon.social/users/{user}/collections/tags.json'
     resp = requests.request("GET", tagsurl)
