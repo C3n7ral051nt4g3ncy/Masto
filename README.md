@@ -52,3 +52,31 @@ With this function you will be able to:
 - Check if invites on the instance are enabled
 - Check if registration is required and if the admin needs to approve the request
 - Check if the instance is a bot 
+
+## 🛠️ Installation
+
+```git clone https://github.com/C3n7ral051nt4g3ncy/Masto```
+<br>
+<br>
+```pip3 install -r requirements.txt```
+<br>
+<br>
+```python3 masto.py```
+
+## 👥 Testing on known users
+
+- For the 1st function, try: ```Gargron```, the founder of Mastodon.social, this pulls a wopping 11 accounts!!!
+- For the 2nd function, searching only on mastodon.social, try: ```osint```
+- For the 3rd function, searching only on mstdn.social, try: ```stux```
+- for the 4th function, searching for instances, try: ```social.network.europa.eu```
+
+
+## 📝 License
+
+[MIT License](https://opensource.org/licenses/MIT) 
+
+<img width="66" src="https://user-images.githubusercontent.com/104733166/200310377-be6d8187-8366-4968-b730-a5c215b310ec.png">
+
+
+
+
