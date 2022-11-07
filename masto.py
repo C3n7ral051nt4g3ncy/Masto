@@ -7,6 +7,7 @@
 import time
 import requests
 import json
+from bs4 import BeautifulSoup
 from tqdm import tqdm
 import sys
 import webbrowser
@@ -15,7 +16,7 @@ import urllib.request
 import urllib.parse
 from pprint import pprint
 
-print("""\033[35m
+print("""\033[34m
 ███╗   ███╗ █████╗ ███████╗████████╗ ██████╗
 ████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗
 ██╔████╔██║███████║███████╗   ██║   ██║   ██║
@@ -56,7 +57,7 @@ def all_servers_search():
     for _ in tqdm(range(10)):
         time.sleep(0.06)
 
-    if response.text == '{"accounts":[],"statuses":[],"hashtags":[]}':
+    if response.text == ('{"accounts":[],"statuses":[],"hashtags":[]}'):
         print(f"\n\033[1m\033[31muser [{user}] NOT found!\033[0m")
         print("try below searching only on Mastodon.social")
         return
@@ -87,8 +88,8 @@ def all_servers_search():
         avt = intelligence['avatar']
 
         print("user ID:", identity)
-        print("account locked:", lock)
         print("profile url:", pro_url)
+        print("account locked:", lock)
         print("username:", username)
         print("account:", account)
         print("display Name:", dispn)
@@ -102,7 +103,8 @@ def all_servers_search():
         print("user is a group:", group)
 
         bad_tags = ['<p>', '</p>', '</a>', '</span>', '<span>', '<a href', '"', '<', '>', 'class=', 'rel=tag', '=',
-                    'relnofollow', 'noopener', 'noreferrer', 'target_blankspan', 'target_blank', 'span', 'invisible']
+                    'relnofollow', 'noopener', 'noreferrer', 'target_blankspan', 'target_blank', 'span',
+                    'invisible', '\u003e\u003c/a\u003e.', '\u003cbr']
         for bad_tag in bad_tags:
             note = note.replace(bad_tag, '')
         print("user bio:", note)
@@ -148,7 +150,7 @@ def mastodon_search():
 
     print("\nprofile url:", proflink)
     print("profile discoverable:", profdisc)
-    print("person | bot:", persbot)
+    print("person or bot:", persbot)
     print("name:", name)
     print("preferred username:", prefuser)
 
@@ -166,15 +168,16 @@ def mastodon_search():
     print("link to user followers:", fwerslink)
     print("link to accounts user is following:", fwinglink)
 
-    attachment = ' | '.join([s.get('value') for s in data.get('attachment', [])])
+    attachments = []
+    for attachment in data.get('attachment', []):
+        name = attachment.get('name')
+        soup = BeautifulSoup(attachment.get('value'), 'html.parser')
+        a = soup.find('a')
+        attachments.append(f'--> {name}: {a.get("href")}')
 
-    b_tags = ['<p>', '</p>', '</a>', '</span>', '<span>', '<a href', '"', '<', '>', 'class=', 'rel=tag', '=',
-              'target=_blank', 'target=_blank', 'rel=nofollow', 'noopener', 'noreferrer', 'span',
-              'invisible', '=', 'spanme', '<>', 'me"><span', 'target_blank', 'relnofollow', 'me https://www.']
-
-    for b_tag in b_tags:
-        attachment = attachment.replace(b_tag, '')
-    print(f"sites found --> {attachment}")
+    print(f"sites found :")
+    for attachment in attachments:
+        print(f"\t {attachment}")
 
     tagsurl = f'https://mastodon.social/users/{user}/collections/tags.json'
     resp = requests.request("GET", tagsurl)
@@ -219,7 +222,7 @@ def mstdn_search():
 
     print("\nprofile url:", proflink)
     print("profile discoverable:", profdisc)
-    print("person | bot:", persorbot)
+    print("person or bot:", persorbot)
     print("name:", name)
     print("preferred username:", prefuser)
 
@@ -237,15 +240,16 @@ def mstdn_search():
     print("link to user followers:", fwerslink)
     print("link to accounts user is following:", fwinglink)
 
-    attachment = ' | '.join([s.get('value') for s in data.get('attachment', [])])
+    attachments = []
+    for attachment in data.get('attachment', []):
+        name = attachment.get('name')
+        soup = BeautifulSoup(attachment.get('value'), 'html.parser')
+        a = soup.find('a')
+        attachments.append(f'-->{name}: {a.get("href")}')
 
-    b_tags = ['<p>', '</p>', '</a>', '</span>', '<span>', '<a href', '"', '<', '>', 'class=', 'rel=tag', '=',
-              'target=_blank', 'target=_blank', 'rel=nofollow', 'noopener', 'noreferrer', 'span',
-              'invisible', '=', 'spanme', '<>', 'me"><span', 'target_blank', 'relnofollow', 'me https://www.']
-
-    for b_tag in b_tags:
-        attachment = attachment.replace(b_tag, '')
-    print(f"sites found --> {attachment}")
+    print(f"sites found :")
+    for attachment in attachments:
+        print(f"\t {attachment}")
 
 
 def instance_search():
@@ -256,35 +260,48 @@ def instance_search():
     print("\nInput instance (server) name \033[1mWITHOUT the @ symbol\033[0m in front!")
     query = input("\033[1mInstance: \033[0m")
     instance = query
-    url = f'https://{instance}/api/v1/instance'
-    response = requests.request("GET", url)
-    data = json.loads(response.text)
+    url = f'https://{instance}/api/v1/instance.json'
+    try:
+        response = requests.request("GET", url)
+        data = json.loads(response.text)
+    except Exception as e:
+        data = {}
 
     for _ in tqdm(range(10)):
         time.sleep(0.03)
 
-    if 'error' in data and data['error'] == 'Not Found':
-        print(f"\n\033[1m\033[31muser [{instance}] NOT found!\033[0m")
+    if not data:
+        print(f"\n\033[31minstance\033[1m [{instance}]\033[0m\033[31m NOT found!\033[0m")
         return
 
+
     name = data['uri']
-    print("\ninstance (server): ", name)
+    print("\ninstance (server): " + name)
+
     title = data['title']
-    print("title:", title)
+    print("title: ", title)
+
     descript = data['short_description']
     print("description: ", descript)
+
     e_mail = data['email']
-    print("instance email:", e_mail)
+    print("instance email: ", e_mail)
+
     thumb = data['thumbnail']
     print("server thumbnail:", thumb)
-    ilang = data['languages']
-    print("instance languages:", ilang)
+
+    lang = data['languages']
+    print("instance languages: ", lang)
+
     reg = data['registrations']
-    print("registation needed:", reg)
+    print("registation needed: ", reg)
+
     reg_approve = data['approval_required']
-    print("admin approval required:", reg_approve)
+    print("admin approval required: ", reg_approve)
+
     invites = data['invites_enabled']
-    print("invites enabled on instance:", invites)
+    print("invites enabled on instance: ", invites)
+
     account_data = data['contact_account']
     pprint(account_data)
 
