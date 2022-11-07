@@ -7,8 +7,6 @@
 [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/C3n7ral051nt4g3ncy/Masto/blob/master/LICENSE) [![security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![HitCount](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto.svg)](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
-<img src="https://img.shields.io/github/forks/C3n7ral051nt4g3ncy/Masto?style=social"> <img src="https://img.shields.io/github/stars/C3n7ral051nt4g3ncy/Masto?style=social"> 
-<img src="https://img.shields.io/github/downloads/C3n7ral051nt4g3ncy/Masto/total"/>
 
 
 ## **About Masto**
