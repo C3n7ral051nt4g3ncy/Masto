@@ -16,28 +16,33 @@ import urllib.request
 import urllib.parse
 from pprint import pprint
 
-print("""\033[34m
+print(
+    """\033[34m
 ███╗   ███╗ █████╗ ███████╗████████╗ ██████╗
 ████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗
 ██╔████╔██║███████║███████╗   ██║   ██║   ██║
 ██║╚██╔╝██║██╔══██║╚════██║   ██║   ██║   ██║
 ██║ ╚═╝ ██║██║  ██║███████║   ██║   ╚██████╔╝
-╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝    ╚═════╝v0.1\033[0m""")
+╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝    ╚═════╝v0.1\033[0m"""
+)
 print("Mastodon OSINT Tool")
 print("by @C3n7ral051nt4g3ncy ")
-print("https://ko-fi.com/tacticalintelanalyst\n"
-      "BTC: bc1q66awg48m2hvdsrf62pvev78z3vkamav7chusde")
+print(
+    "https://ko-fi.com/tacticalintelanalyst\n"
+    "BTC: bc1q66awg48m2hvdsrf62pvev78z3vkamav7chusde"
+)
 
 headers = {
-        "Accept": 'text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        "accept-language": "en-US;q=0.9,en,q=0,8",
-        "accept-encoding": "gzip, deflate",
-        "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) Chrome/104.0.0.0 "
-        "Safari/537.36", }
+    "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "accept-language": "en-US;q=0.9,en,q=0,8",
+    "accept-encoding": "gzip, deflate",
+    "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) Chrome/104.0.0.0 "
+    "Safari/537.36",
+}
 
 
 def status():
-    url = 'https://mastodon.social/api/v2/search?q=mastodon'
+    url = "https://mastodon.social/api/v2/search?q=mastodon"
     request = requests.get(url)
     if request.status_code == 200:
         print("\n\033[32m\033[1mMastodon API is ready to rooooooll!\033[0m")
@@ -50,7 +55,7 @@ def all_servers_search():
     print("\nInput username \033[1mWITHOUT the @ symbol\033[0m in front!")
     query = input("\033[1mUsername: \033[0m")
     user = query
-    url = f'https://mastodon.social/api/v2/search?q={user}'
+    url = f"https://mastodon.social/api/v2/search?q={user}"
     response = requests.request("GET", url)
     data = json.loads(response.text)
 
@@ -63,29 +68,29 @@ def all_servers_search():
         return
     time.sleep(1)
 
-    data = filter(lambda x: x.get('username').lower() == user.lower(), data['accounts'])
+    data = filter(lambda x: x.get("username").lower() == user.lower(), data["accounts"])
     for index, intelligence in enumerate(list(data), start=1):
 
         print("\n\n══════════")
         print(f"\033[1mAccount: {index}\033[0m")
         print("══════════\n")
 
-        identity = intelligence['id']
-        lock = intelligence['locked']
-        pro_url = intelligence['url']
-        username = intelligence['username']
-        account = intelligence['acct']
-        dispn = intelligence['display_name']
-        creation_date = intelligence['created_at']
-        bot = intelligence['bot']
-        dscvr = intelligence['discoverable']
-        fwers = intelligence['followers_count']
-        fwing = intelligence['following_count']
-        posts = intelligence['statuses_count']
-        lastm = intelligence['last_status_at']
-        group = intelligence['group']
-        note = intelligence['note']
-        avt = intelligence['avatar']
+        identity = intelligence["id"]
+        lock = intelligence["locked"]
+        pro_url = intelligence["url"]
+        username = intelligence["username"]
+        account = intelligence["acct"]
+        dispn = intelligence["display_name"]
+        creation_date = intelligence["created_at"]
+        bot = intelligence["bot"]
+        dscvr = intelligence["discoverable"]
+        fwers = intelligence["followers_count"]
+        fwing = intelligence["following_count"]
+        posts = intelligence["statuses_count"]
+        lastm = intelligence["last_status_at"]
+        group = intelligence["group"]
+        note = intelligence["note"]
+        avt = intelligence["avatar"]
 
         print("user ID:", identity)
         print("profile url:", pro_url)
@@ -102,11 +107,31 @@ def all_servers_search():
         print("user last message date:", lastm)
         print("user is a group:", group)
 
-        bad_tags = ['<p>', '</p>', '</a>', '</span>', '<span>', '<a href', '"', '<', '>', 'class=', 'rel=tag', '=',
-                    'relnofollow', 'noopener', 'noreferrer', 'target_blankspan', 'target_blank', 'span',
-                    'invisible', '\u003e\u003c/a\u003e.', '\u003cbr']
+        bad_tags = [
+            "<p>",
+            "</p>",
+            "</a>",
+            "</span>",
+            "<span>",
+            "<a href",
+            '"',
+            "<",
+            ">",
+            "class=",
+            "rel=tag",
+            "=",
+            "relnofollow",
+            "noopener",
+            "noreferrer",
+            "target_blankspan",
+            "target_blank",
+            "span",
+            "invisible",
+            "\u003e\u003c/a\u003e.",
+            "\u003cbr",
+        ]
         for bad_tag in bad_tags:
-            note = note.replace(bad_tag, '')
+            note = note.replace(bad_tag, "")
         print("user bio:", note)
         print("user's avatar link:", avt)
 
@@ -125,28 +150,28 @@ def mastodon_search():
     print("\nInput username \033[1mWITHOUT the @ symbol\033[0m in front!")
     query = input("\033[1mUsername: \033[0m")
     user = query
-    url = f'https://mastodon.social/@{user}.json'
+    url = f"https://mastodon.social/@{user}.json"
     response = requests.request("GET", url)
     data = json.loads(response.text)
 
     for _ in tqdm(range(10)):
         time.sleep(0.03)
 
-    if 'error' in data and data['error'] == 'Not Found':
+    if "error" in data and data["error"] == "Not Found":
         print(f"\n\033[1m\033[31muser [{user}] NOT found!\033[0m")
         return
 
-    proflink = data['id']
-    name = data['name']
-    persbot = data['type']
-    profdisc = data['discoverable']
-    prefuser = data['preferredUsername']
-    basicinfo = data['summary']
-    jdate = data['published']
-    fwersapprove = data['manuallyApprovesFollowers']
-    pubkey = data['publicKey']
-    fwerslink = data['followers']
-    fwinglink = data['following']
+    proflink = data["id"]
+    name = data["name"]
+    persbot = data["type"]
+    profdisc = data["discoverable"]
+    prefuser = data["preferredUsername"]
+    basicinfo = data["summary"]
+    jdate = data["published"]
+    fwersapprove = data["manuallyApprovesFollowers"]
+    pubkey = data["publicKey"]
+    fwerslink = data["followers"]
+    fwinglink = data["following"]
 
     print("\nprofile url:", proflink)
     print("profile discoverable:", profdisc)
@@ -154,14 +179,27 @@ def mastodon_search():
     print("name:", name)
     print("preferred username:", prefuser)
 
-    bad_tags = ['<p>', '</p>', '</a>', '</span>', '<span>', '<a href', '"', '<', '>', 'class=', 'rel=tag', '=']
+    bad_tags = [
+        "<p>",
+        "</p>",
+        "</a>",
+        "</span>",
+        "<span>",
+        "<a href",
+        '"',
+        "<",
+        ">",
+        "class=",
+        "rel=tag",
+        "=",
+    ]
     for bad_tag in bad_tags:
-        basicinfo = basicinfo.replace(bad_tag, '')
+        basicinfo = basicinfo.replace(bad_tag, "")
     print("bio:", basicinfo)
 
-    bad_date_tag = ['T00:00:00Z']
+    bad_date_tag = ["T00:00:00Z"]
     for bad_date_tag in bad_date_tag:
-        jdate = jdate.replace(bad_date_tag, '')
+        jdate = jdate.replace(bad_date_tag, "")
     print("joined Mastodon on:", jdate)
     print("user approves followers manually:", fwersapprove)
     print("public key:", pubkey)
@@ -169,21 +207,21 @@ def mastodon_search():
     print("link to accounts user is following:", fwinglink)
 
     attachments = []
-    for attachment in data.get('attachment', []):
-        name = attachment.get('name')
-        soup = BeautifulSoup(attachment.get('value'), 'html.parser')
-        a = soup.find('a')
+    for attachment in data.get("attachment", []):
+        name = attachment.get("name")
+        soup = BeautifulSoup(attachment.get("value"), "html.parser")
+        a = soup.find("a")
         attachments.append(f'--> {name}: {a.get("href")}')
 
     print(f"sites found :")
     for attachment in attachments:
         print(f"\t {attachment}")
 
-    tagsurl = f'https://mastodon.social/users/{user}/collections/tags.json'
+    tagsurl = f"https://mastodon.social/users/{user}/collections/tags.json"
     resp = requests.request("GET", tagsurl)
     tags_data = json.loads(resp.text)
-    htags_numb = tags_data['totalItems']
-    items = ' | '.join([t.get('name') for t in tags_data.get('items', [])])
+    htags_numb = tags_data["totalItems"]
+    items = " | ".join([t.get("name") for t in tags_data.get("items", [])])
     print("number of Hashtags found:", htags_numb)
     print(f"hashtags found --> {items}")
 
@@ -197,28 +235,28 @@ def mstdn_search():
     print("\nInput username \033[1mWITHOUT the @ symbol\033[0m in front!")
     query = input("\033[1mUsername: \033[0m")
     user = query
-    url = f'https://mstdn.social/@{user}.json'
+    url = f"https://mstdn.social/@{user}.json"
     response = requests.request("GET", url)
     data = json.loads(response.text)
 
     for _ in tqdm(range(10)):
         time.sleep(0.03)
 
-    if 'error' in data and data['error'] == 'Not Found':
+    if "error" in data and data["error"] == "Not Found":
         print(f"\n\033[1m\033[31muser [{user}] NOT found!\033[0m")
         return
 
-    proflink = data['id']
-    name = data['name']
-    persorbot = data['type']
-    profdisc = data['discoverable']
-    prefuser = data['preferredUsername']
-    basicinfo = data['summary']
-    jdate = data['published']
-    fwersapprove = data['manuallyApprovesFollowers']
-    pubkey = data['publicKey']
-    fwerslink = data['followers']
-    fwinglink = data['following']
+    proflink = data["id"]
+    name = data["name"]
+    persorbot = data["type"]
+    profdisc = data["discoverable"]
+    prefuser = data["preferredUsername"]
+    basicinfo = data["summary"]
+    jdate = data["published"]
+    fwersapprove = data["manuallyApprovesFollowers"]
+    pubkey = data["publicKey"]
+    fwerslink = data["followers"]
+    fwinglink = data["following"]
 
     print("\nprofile url:", proflink)
     print("profile discoverable:", profdisc)
@@ -226,14 +264,27 @@ def mstdn_search():
     print("name:", name)
     print("preferred username:", prefuser)
 
-    bad_tags = ['<p>', '</p>', '</a>', '</span>', '<span>', '<a href', '"', '<', '>', 'class=', 'rel=tag', '=']
+    bad_tags = [
+        "<p>",
+        "</p>",
+        "</a>",
+        "</span>",
+        "<span>",
+        "<a href",
+        '"',
+        "<",
+        ">",
+        "class=",
+        "rel=tag",
+        "=",
+    ]
     for bad_tag in bad_tags:
-        basicinfo = basicinfo.replace(bad_tag, '')
+        basicinfo = basicinfo.replace(bad_tag, "")
     print("bio:", basicinfo)
 
-    bad_date_tag = ['T00:00:00Z']
+    bad_date_tag = ["T00:00:00Z"]
     for bad_date_tag in bad_date_tag:
-        jdate = jdate.replace(bad_date_tag, '')
+        jdate = jdate.replace(bad_date_tag, "")
     print("joined mstdn on:", jdate)
     print("user approves followers manually:", fwersapprove)
     print("public key:", pubkey)
@@ -241,10 +292,10 @@ def mstdn_search():
     print("link to accounts user is following:", fwinglink)
 
     attachments = []
-    for attachment in data.get('attachment', []):
-        name = attachment.get('name')
-        soup = BeautifulSoup(attachment.get('value'), 'html.parser')
-        a = soup.find('a')
+    for attachment in data.get("attachment", []):
+        name = attachment.get("name")
+        soup = BeautifulSoup(attachment.get("value"), "html.parser")
+        a = soup.find("a")
         attachments.append(f'-->{name}: {a.get("href")}')
 
     print(f"sites found :")
@@ -260,7 +311,7 @@ def instance_search():
     print("\nInput instance (server) name \033[1mWITHOUT the @ symbol\033[0m in front!")
     query = input("\033[1mInstance: \033[0m")
     instance = query
-    url = f'https://{instance}/api/v1/instance.json'
+    url = f"https://{instance}/api/v1/instance.json"
     try:
         response = requests.request("GET", url)
         data = json.loads(response.text)
@@ -271,38 +322,39 @@ def instance_search():
         time.sleep(0.03)
 
     if not data:
-        print(f"\n\033[31minstance\033[1m [{instance}]\033[0m\033[31m NOT found!\033[0m")
+        print(
+            f"\n\033[31minstance\033[1m [{instance}]\033[0m\033[31m NOT found!\033[0m"
+        )
         return
 
-
-    name = data['uri']
+    name = data["uri"]
     print("\ninstance (server): " + name)
 
-    title = data['title']
+    title = data["title"]
     print("title: ", title)
 
-    descript = data['short_description']
+    descript = data["short_description"]
     print("description: ", descript)
 
-    e_mail = data['email']
+    e_mail = data["email"]
     print("instance email: ", e_mail)
 
-    thumb = data['thumbnail']
+    thumb = data["thumbnail"]
     print("server thumbnail:", thumb)
 
-    lang = data['languages']
+    lang = data["languages"]
     print("instance languages: ", lang)
 
-    reg = data['registrations']
+    reg = data["registrations"]
     print("registation needed: ", reg)
 
-    reg_approve = data['approval_required']
+    reg_approve = data["approval_required"]
     print("admin approval required: ", reg_approve)
 
-    invites = data['invites_enabled']
+    invites = data["invites_enabled"]
     print("invites enabled on instance: ", invites)
 
-    account_data = data['contact_account']
+    account_data = data["contact_account"]
     pprint(account_data)
 
 
@@ -314,7 +366,7 @@ def main():
     instance_search()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     while True:
         main()
 
