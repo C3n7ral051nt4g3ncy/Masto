@@ -175,7 +175,7 @@ def mastodon_search():
     fwinglink = data["following"]
 
     print("\nprofile url:", proflink)
-    print("profile discoverable:", profdisc)
+    print("discoverable through recommendations and trends:", profdisc)
     print("person or bot:", persbot)
     print("name:", name)
     print("preferred username:", prefuser)
@@ -260,7 +260,7 @@ def mstdn_search():
     fwinglink = data["following"]
 
     print("\nprofile url:", proflink)
-    print("profile discoverable:", profdisc)
+    print("discoverable through recommendations/trends:", profdisc)
     print("person or bot:", persorbot)
     print("name:", name)
     print("preferred username:", prefuser)
