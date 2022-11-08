@@ -1,11 +1,3 @@
-time
 requests
 bs4
-json
 tqdm
-sys
-webbrowser
-re
-urllib.request
-urllib.parse
-pprint
