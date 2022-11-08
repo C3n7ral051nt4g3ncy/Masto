@@ -68,7 +68,7 @@ def all_servers_search():
         return
     time.sleep(1)
 
-    data = filter(lambda x: x.get("username").lower() == user.lower(), data["accounts"])
+    data = filter(lambda x: x.get("username").lower() == user_query.lower(), data["accounts"])
     for index, intelligence in enumerate(list(data), start=1):
 
         print("\n\n══════════")
