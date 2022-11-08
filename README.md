@@ -80,6 +80,11 @@ The **same username** can be found across different instances(servers):
 - For the 3rd function, searching only on [mstdn.social](https://mstdn.social), try: ```stux```
 - For the 4th function, searching for instances, try: ```social.network.europa.eu```
 
+## **Issues with not finding a user**
+- You may know of a valid user and have the link to the user's profile, you input the user on Masto and get no result.
+- I asked the Mastodon Team about this issue, they replied:
+> There is no global search, the server will reply with what it knows about. If it has not encountered the account, it will not return it in search results.
+
 
 ## 📝 **License**
 
