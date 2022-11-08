@@ -9,19 +9,16 @@
 [![HitCount](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto.svg)](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 
-## **About Masto**
+## 🐘**About Masto**
 
 **Masto provides information/intelligence on [Mastodon.social](https://mastodon.social) users** 
 <br>
-<br>
-The same username can be used across different instances(servers), finding the same username on different instances won't prove it's the same person behind each account. <br>
-This may cause **impersonation issues** in the future, although each instance can only have **one unique username per instance**.<br>
-Example: ```@osint@counter.social```
-
+## **Masto capabilities**
 **Masto OSINT Tool** helps to:
 - Find user ID
+- Find exact username match across instances (the tool currently pulls 3 accounts with the username ```OSINT``` from 3 instances, whereas the mastodon.social search bar returns one result, and returns many accounts that only start with ```osint```, such as ```osinttechnical```, but no exact match is found through a search done via browser.
 - Find all (possible) accounts belonging to a user without logging in to Mastodon (**Mastodon requires users to log in and after the first 5 results you get**: ```401 Search queries pagination is not supported without authentication```
-- Find user correlation (can't be found by searching on the Mastodon.social website)
+- Find username correlation (can't be found by searching on the Mastodon.social website)
 - Check if the user is a bot 
 - Check if the user has to approve followers manually
 - Check if the account is a group
@@ -38,7 +35,7 @@ Example: ```@osint@counter.social```
 - Get link to followers and following
 - Get user public key (PEM -Privacy-enhanced Electronic Mail) 
 
-## Additional instance (server) feature
+## **Additional instance (server) feature**
 **This is a nice feature**, if you type ```social.network.europa.eu``` on [Mastodon.social](https://mastodon.social/search) , you won't get a result as the instance is set to ```not discoverable```. <br>
 
 This function helps to:
@@ -60,7 +57,7 @@ This function helps to:
 - Check if registration is required and if the admin needs to approve the request
 - Check if the admin is a bot 
 
-## 🛠️ Installation
+## 🛠️ **Installation**
 
 ```git clone https://github.com/C3n7ral051nt4g3ncy/Masto```
 <br>
@@ -70,7 +67,13 @@ This function helps to:
 <br>
 ```python3 masto.py```
 
-## 👥 Testing on known users
+## 🐘**Mastodon.social understanding**
+The **same username** can be found across different instances(servers):
+- example: @osint@mastodon.social | @osint@mstdn.social | @osint@counter.social
+- finding the same username on different instances does not prove it's the same person behind each account
+- This may cause impersonation issues in the future, although each instance can only have **one unique username** in the server.
+
+## 👥 **Testing on known users**
 
 - For the 1st function, try: ```Gargron```, the founder of [Mastodon.social](https://mastodon.social), this pulls a wopping 11 accounts!!! (same username doesn't prove the 11 accounts belong to the Mastodon Developper).
 - For the 2nd function, searching only on [Mastodon.social](https://mastodon.social), try: ```osint```
@@ -78,7 +81,7 @@ This function helps to:
 - For the 4th function, searching for instances, try: ```social.network.europa.eu```
 
 
-## 📝 License
+## 📝 **License**
 
 [MIT License](https://opensource.org/licenses/MIT) <br>
 *Tool made for the OSINT and Cyber community, feel free to contribute code.*
