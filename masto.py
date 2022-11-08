@@ -140,9 +140,8 @@ def mastodon_search():
     print("\033[34mSearch for user \033[1mONLY on Mastodon.social\033[0m")
     print("═══════════════════════════════════════")
     print("\nInput username \033[1mWITHOUT the @ symbol\033[0m in front!")
-    query = input("\033[1mUsername: \033[0m")
-    user = query
-    url = f"https://mastodon.social/@{user}.json"
+    user_query = input("\033[1mUsername: \033[0m")
+    url = f"https://mastodon.social/@{user_query}.json"
     response = requests.request("GET", url)
     data = json.loads(response.text)
 
@@ -150,53 +149,48 @@ def mastodon_search():
         time.sleep(0.03)
 
     if "error" in data and data["error"] == "Not Found":
-        print(f"\n\033[1m\033[31muser [{user}] NOT found!\033[0m")
+        print(f"\n\033[1m\033[31muser [{user_query}] NOT found!\033[0m")
         return
 
-    proflink = data["id"]
-    name = data["name"]
-    persbot = data["type"]
-    profdisc = data["discoverable"]
-    prefuser = data["preferredUsername"]
-    basicinfo = data["summary"]
-    jdate = data["published"]
-    fwersapprove = data["manuallyApprovesFollowers"]
-    pubkey = data["publicKey"]
-    fwerslink = data["followers"]
-    fwinglink = data["following"]
-
-    print("\nprofile url:", proflink)
-    print("profile discoverable:", profdisc)
-    print("person or bot:", persbot)
-    print("name:", name)
-    print("preferred username:", prefuser)
-
-    bad_tags = [
-        "<p>",
-        "</p>",
-        "</a>",
-        "</span>",
-        "<span>",
-        "<a href",
-        '"',
-        "<",
-        ">",
-        "class=",
-        "rel=tag",
-        "=",
-    ]
+    # Create a profile data dictionary
+    profile_data ={"profile url": data["id"],
+                   "is discoverable?": data["discoverable"],
+                   "is human or bot?": data["type"],
+                   "name": data["name"],
+                   "preferred username": data["preferredUsername"],
+                   "user approves followers manually?": data["manuallyApprovesFollowers"],
+                   "public key": data["publicKey"],
+                   "link to user followers": data["followers"],
+                   "link to accounts user is following": data["following"]
+                   }
+    # Iterate over the profile data dictionary and print its keys and values
+    for profile_key, profile_value in profile_data:
+        print(f"{profile_key}: {profile_value}")
+    
+    basic_info = data["summary"]
+    joined_date = data["published"]
+    bad_tags = ["<p>",
+                "</p>",
+                "</a>",
+                "</span>",
+                "<span>",
+                "<a href",
+                '"',
+                "<",
+                ">",
+                "class=",
+                "rel=tag",
+                "=",
+                ]
     for bad_tag in bad_tags:
-        basicinfo = basicinfo.replace(bad_tag, "")
-    print("bio:", basicinfo)
+        basic_info = basic_info.replace(bad_tag, "")
+    print("bio:", basic_info)
+    
 
     bad_date_tag = ["T00:00:00Z"]
     for bad_date_tag in bad_date_tag:
-        jdate = jdate.replace(bad_date_tag, "")
-    print("joined Mastodon on:", jdate)
-    print("user approves followers manually:", fwersapprove)
-    print("public key:", pubkey)
-    print("link to user followers:", fwerslink)
-    print("link to accounts user is following:", fwinglink)
+        joined_date = joined_date.replace(bad_date_tag, "")
+    print("joined mstdn on", joined_date)
 
     attachments = []
     for attachment in data.get("attachment", []):
@@ -209,7 +203,7 @@ def mastodon_search():
     for attachment in attachments:
         print(f"\t {attachment}")
 
-    tagsurl = f"https://mastodon.social/users/{user}/collections/tags.json"
+    tagsurl = f"https://mastodon.social/users/{user_query}/collections/tags.json"
     resp = requests.request("GET", tagsurl)
     tags_data = json.loads(resp.text)
     htags_numb = tags_data["totalItems"]
@@ -225,9 +219,8 @@ def mstdn_search():
     print("\033[35mCan provide additional info\033[0m")
     print("════════════════════════════════════")
     print("\nInput username \033[1mWITHOUT the @ symbol\033[0m in front!")
-    query = input("\033[1mUsername: \033[0m")
-    user = query
-    url = f"https://mstdn.social/@{user}.json"
+    user_query = input("\033[1mUsername: \033[0m")
+    url = f"https://mstdn.social/@{user_query}.json"
     response = requests.request("GET", url)
     data = json.loads(response.text)
 
@@ -235,53 +228,48 @@ def mstdn_search():
         time.sleep(0.03)
 
     if "error" in data and data["error"] == "Not Found":
-        print(f"\n\033[1m\033[31muser [{user}] NOT found!\033[0m")
+        print(f"\n\033[1m\033[31muser [{user_query}] NOT found!\033[0m")
         return
 
-    proflink = data["id"]
-    name = data["name"]
-    persorbot = data["type"]
-    profdisc = data["discoverable"]
-    prefuser = data["preferredUsername"]
-    basicinfo = data["summary"]
-    jdate = data["published"]
-    fwersapprove = data["manuallyApprovesFollowers"]
-    pubkey = data["publicKey"]
-    fwerslink = data["followers"]
-    fwinglink = data["following"]
-
-    print("\nprofile url:", proflink)
-    print("profile discoverable:", profdisc)
-    print("person or bot:", persorbot)
-    print("name:", name)
-    print("preferred username:", prefuser)
-
-    bad_tags = [
-        "<p>",
-        "</p>",
-        "</a>",
-        "</span>",
-        "<span>",
-        "<a href",
-        '"',
-        "<",
-        ">",
-        "class=",
-        "rel=tag",
-        "=",
-    ]
+    # Create a profile data dictionary
+    profile_data ={"profile url": data["id"],
+                   "is discoverable?": data["discoverable"],
+                   "is human or bot?": data["type"],
+                   "name": data["name"],
+                   "preferred username": data["preferredUsername"],
+                   "user approves followers manually?": data["manuallyApprovesFollowers"],
+                   "public key": data["publicKey"],
+                   "link to user followers": data["followers"],
+                   "link to accounts user is following": data["following"]
+                   }
+    # Iterate over the profile data dictionary and print its keys and values 
+    for profile_key, profile_value in profile_data.items():
+        print(f"{profile_key}: {profile_value}")
+    
+    basic_info = data["summary"]
+    joined_date = data["published"]
+    bad_tags = ["<p>",
+                "</p>",
+                "</a>",
+                "</span>",
+                "<span>",
+                "<a href",
+                '"',
+                "<",
+                ">",
+                "class=",
+                "rel=tag",
+                "=",
+                ]
     for bad_tag in bad_tags:
-        basicinfo = basicinfo.replace(bad_tag, "")
-    print("bio:", basicinfo)
+        basic_info = basic_info.replace(bad_tag, "")
+    print("bio:", basic_info)
+    
 
     bad_date_tag = ["T00:00:00Z"]
     for bad_date_tag in bad_date_tag:
-        jdate = jdate.replace(bad_date_tag, "")
-    print("joined mstdn on:", jdate)
-    print("user approves followers manually:", fwersapprove)
-    print("public key:", pubkey)
-    print("link to user followers:", fwerslink)
-    print("link to accounts user is following:", fwinglink)
+        joined_date = joined_date.replace(bad_date_tag, "")
+    print("joined mstdn on", joined_date)
 
     attachments = []
     for attachment in data.get("attachment", []):
@@ -301,9 +289,8 @@ def instance_search():
     print("\033[32mExample: social.network.europa.eu\033[0m")
     print("═══════════════════════════════════════")
     print("\nInput instance (server) name \033[1mWITHOUT the @ symbol\033[0m in front!")
-    query = input("\033[1mInstance: \033[0m")
-    instance = query
-    url = f"https://{instance}/api/v1/instance.json"
+    instance_query = input("\033[1mInstance: \033[0m")
+    url = f"https://{instance_query}/api/v1/instance.json"
     try:
         response = requests.request("GET", url)
         data = json.loads(response.text)
@@ -315,39 +302,24 @@ def instance_search():
 
     if not data:
         print(
-            f"\n\033[31minstance\033[1m [{instance}]\033[0m\033[31m NOT found!\033[0m"
+            f"\n\033[31minstance\033[1m [{instance_query}]\033[0m\033[31m NOT found!\033[0m"
         )
         return
 
-    name = data["uri"]
-    print("\ninstance (server): " + name)
-
-    title = data["title"]
-    print("title: ", title)
-
-    descript = data["short_description"]
-    print("description: ", descript)
-
-    e_mail = data["email"]
-    print("instance email: ", e_mail)
-
-    thumb = data["thumbnail"]
-    print("server thumbnail:", thumb)
-
-    lang = data["languages"]
-    print("instance languages: ", lang)
-
-    reg = data["registrations"]
-    print("registation needed: ", reg)
-
-    reg_approve = data["approval_required"]
-    print("admin approval required: ", reg_approve)
-
-    invites = data["invites_enabled"]
-    print("invites enabled on instance: ", invites)
-
-    account_data = data["contact_account"]
-    pprint(account_data)
+    instance_data = {"instance (server)": data["uri"],
+                     "title": data["title"],
+                     "description": data["short_description"],
+                     "instance email": data["email"],
+                     "server thumbnail": data["thumbnail"],
+                     "instance languages": data["languages"],
+                     "registration needed?": data["registrations"],
+                     "admin approval required?": data["approval_required"],
+                     "invites enabled on instance?": data["invites_enabled"],
+                     }
+    for instance_key, instance_value in instance_data.items():
+        print(f"{instance_key}: {instance_value}")
+    pprint(data["contact_account"])
+    print("\n")
 
 
 def main():
