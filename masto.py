@@ -165,7 +165,7 @@ def mastodon_search():
     # Iterate over the profile data dictionary and print its keys and values
     for profile_key, profile_value in profile_data:
         print(f"{profile_key}: {profile_value}")
-    
+
     basic_info = data["summary"]
     joined_date = data["published"]
     bad_tags = ["<p>",
@@ -184,7 +184,7 @@ def mastodon_search():
     for bad_tag in bad_tags:
         basic_info = basic_info.replace(bad_tag, "")
     print("bio:", basic_info)
-    
+
 
     bad_date_tag = ["T00:00:00Z"]
     for bad_date_tag in bad_date_tag:
@@ -198,7 +198,7 @@ def mastodon_search():
         a = soup.find("a")
         attachments.append(f'--> {name}: {a.get("href")}')
 
-    print(f"sites found :")
+    print("sites found :")
     for attachment in attachments:
         print(f"\t {attachment}")
 
@@ -244,7 +244,7 @@ def mstdn_search():
     # Iterate over the profile data dictionary and print its keys and values 
     for profile_key, profile_value in profile_data.items():
         print(f"{profile_key}: {profile_value}")
-    
+
     basic_info = data["summary"]
     joined_date = data["published"]
     bad_tags = ["<p>",
@@ -263,7 +263,7 @@ def mstdn_search():
     for bad_tag in bad_tags:
         basic_info = basic_info.replace(bad_tag, "")
     print("bio:", basic_info)
-    
+
 
     bad_date_tag = ["T00:00:00Z"]
     for bad_date_tag in bad_date_tag:
@@ -277,7 +277,7 @@ def mstdn_search():
         a = soup.find("a")
         attachments.append(f'-->{name}: {a.get("href")}')
 
-    print(f"sites found :")
+    print("sites found :")
     for attachment in attachments:
         print(f"\t {attachment}")
 
