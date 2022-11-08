@@ -54,9 +54,8 @@ def status():
 
 def all_servers_search():
     print("\nInput username \033[1mWITHOUT the @ symbol\033[0m in front!")
-    query = input("\033[1mUsername: \033[0m")
-    user = query
-    url = f"https://mastodon.social/api/v2/search?q={user}"
+    user_query = input("\033[1mUsername: \033[0m")
+    url = f"https://mastodon.social/api/v2/search?q={user_query}"
     response = requests.request("GET", url)
     data = json.loads(response.text)
 
@@ -64,7 +63,7 @@ def all_servers_search():
         time.sleep(0.06)
 
     if response.text == ('{"accounts":[],"statuses":[],"hashtags":[]}'):
-        print(f"\n\033[1m\033[31muser [{user}] NOT found!\033[0m")
+        print(f"\n\033[1m\033[31muser [{user_query}] NOT found!\033[0m")
         print("try below searching only on Mastodon.social")
         return
     time.sleep(1)
