@@ -76,69 +76,60 @@ def all_servers_search():
         print(f"\033[1mAccount: {index}\033[0m")
         print("══════════\n")
 
-        identity = intelligence["id"]
-        lock = intelligence["locked"]
-        pro_url = intelligence["url"]
-        username = intelligence["username"]
-        account = intelligence["acct"]
-        dispn = intelligence["display_name"]
-        creation_date = intelligence["created_at"]
-        bot = intelligence["bot"]
-        dscvr = intelligence["discoverable"]
-        fwers = intelligence["followers_count"]
-        fwing = intelligence["following_count"]
-        posts = intelligence["statuses_count"]
-        lastm = intelligence["last_status_at"]
-        group = intelligence["group"]
+        # Create a user data dictionary
+        user_data = {"user ID": intelligence["id"],
+                     "profile url": intelligence["url"],
+                     "account locked": intelligence["locked"],
+                     "username": intelligence["username"],
+                     "account": intelligence["acct"],
+                     "display name": intelligence["display_name"],
+                     "profile creation date": intelligence["created_at"],
+                     "user is a bot?": intelligence["bot"],
+                     "user opted to be listed on the profile directory?": intelligence["discoverable"],
+                     "followers": intelligence["followers_count"],
+                     "following": intelligence["following_count"],
+                     "number of posts": intelligence["statuses_count"],
+                     "user last message date": intelligence["last_status_at"],
+                     "user is a group?": intelligence["group"],
+                     }
+        # Iterate over the dictionary, and print its keys, and values
+        for user_key, user_value in user_data.items():
+            print(f"{user_key}: {user_value}")
+
+        # Had to exclude note and avatar from the user_data dictionary
+        # Thought it might cause some issues
         note = intelligence["note"]
-        avt = intelligence["avatar"]
-
-        print("user ID:", identity)
-        print("profile url:", pro_url)
-        print("account locked:", lock)
-        print("username:", username)
-        print("account:", account)
-        print("display Name:", dispn)
-        print("profile creation date:", creation_date)
-        print("user is a bot:", bot)
-        print("user opted to be listed on the profile directory:", dscvr)
-        print("followers:", fwers)
-        print("following:", fwing)
-        print("number of posts:", posts)
-        print("user last message date:", lastm)
-        print("user is a group:", group)
-
-        bad_tags = [
-            "<p>",
-            "</p>",
-            "</a>",
-            "</span>",
-            "<span>",
-            "<a href",
-            '"',
-            "<",
-            ">",
-            "class=",
-            "rel=tag",
-            "=",
-            "relnofollow",
-            "noopener",
-            "noreferrer",
-            "target_blankspan",
-            "target_blank",
-            "span",
-            "invisible",
-            "\u003e\u003c/a\u003e.",
-            "\u003cbr",
-        ]
+        avatar = intelligence["avatar"]
+        bad_tags = ["<p>",
+                        "</p>",
+                        "</a>",
+                        "</span>",
+                        "<span>",
+                        "<a href",
+                        '"',
+                        "<",
+                        ">",
+                        "class=",
+                        "rel=tag",
+                        "=",
+                        "relnofollow",
+                        "noopener",
+                        "noreferrer",
+                        "target_blankspan",
+                        "target_blank",
+                        "span",
+                        "invisible",
+                        "\u003e\u003c/a\u003e.",
+                        "\u003cbr",
+                        ]
         for bad_tag in bad_tags:
             note = note.replace(bad_tag, "")
         print("user bio:", note)
-        print("user's avatar link:", avt)
+        print("user's avatar link:", avatar)
 
         choice = input("\033[1mopen avatar in browser | Y or N: \033[0m")
         if choice in ["y", "Y", "YES", "yes"]:
-            webbrowser.open(avt)
+            webbrowser.open(avatar)
         if choice in ["n", "N", "NO", "no"]:
             continue
 
