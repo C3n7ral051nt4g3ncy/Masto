@@ -100,7 +100,7 @@ on `load more` will give you a 401 error and request the user to log in.
 The **same username** can be found across different instances(servers):
 - example: @osint@mastodon.social | @osint@mstdn.social | @osint@counter.social
 - finding the same username on different instances does not prove it's the same person behind each account
-- This may cause impersonation issues in the future, although each instance can only have **one unique username** in the server.
+- This may cause impersonation issues in the future, although each instance can only have **one unique username** in the server, and ALL users should verify their accounts with the `<a rel="me"` attribute which helps others identifying a scammer/impersonator. 
 
 ## 👥 **Testing on known users**
 
