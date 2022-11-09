@@ -337,6 +337,12 @@ def instance_search():
     descript = data["short_description"]
     print("description: ", descript)
 
+    det_descript = data["description"]
+    invalid_tags = ["<strong>", "</strong>", "<a href=", "target=", "</a>", "<a>","_blank", ">", "<", '"']
+    for invalid_tag in invalid_tags:
+        det_descript = det_descript.replace(invalid_tag, "")
+    print("detailed description: ", det_descript)
+
     e_mail = data["email"]
     print("instance email: ", e_mail)
 
