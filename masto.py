@@ -358,9 +358,6 @@ def instance_search():
     reg_approve = data["approval_required"]
     print("admin approval required: ", reg_approve)
 
-    invites = data["invites_enabled"]
-    print("invites enabled on instance: ", invites)
-
     account_data = data["contact_account"]
     pprint(account_data)
 
