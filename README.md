@@ -4,6 +4,8 @@
 
 <br>
 
+<div align="center">
+
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
 [![MIT License](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/C3n7ral051nt4g3ncy/Masto/blob/master/LICENSE) 
@@ -13,6 +15,8 @@
 <img src="https://img.shields.io/github/forks/C3n7ral051nt4g3ncy/Masto?color=bright%20green&logoColor=white&logo=github">
 <img src="https://img.shields.io/github/last-commit/C3n7ral051nt4g3ncy/MAsto?color=bright%20green&label=Last%20commit">
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+
+</div>
 
 
 
