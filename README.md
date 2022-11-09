@@ -53,7 +53,6 @@ This function helps to:
 - Get admin url
 - Get admin avatar
 - Check if instance admin account is locked
-- Check if invites on the instance are enabled
 - Check if registration is required and if the admin needs to approve the request
 - Check if the admin is a bot 
 
