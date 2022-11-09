@@ -91,7 +91,7 @@ on `load more` will give you a 401 error and request the user to log in.
 
 **Use case 4**: **Getting information on locked instances**:
 - Tried searching for the instance [0sint.social](https://0sint.social/about), there isn't much information via a browser search.
-- 🪄 **Masto successful outcome**: **Masto found more information on the instance and on the admin, including email address.
+- 🪄 **Masto successful outcome**: **Masto found more information on the instance and on the admin, including email address.**
 
 
 ## ❌ **Tool (unsuccessful) use cases**
