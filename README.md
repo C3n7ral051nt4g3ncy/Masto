@@ -87,6 +87,13 @@ on `load more` will give you a 401 error and request the user to log in.
 - Tried searching `OSINT` and `@OSINT` via browser, Mastodon returned quite erratic results, with many accounts that just **begin with** `osint`, such as the user `@Osinttechnical`
 - 🪄 **Masto successful outcome**: **Masto found 3 accurate `@osint`** user accounts from 3 instances.
 
+<br>
+
+**Use case 4**: **Getting information on locked instances**:
+- Tried searching for the instance [0sint.social](https://0sint.social/about), there isn't much information via a browser search.
+- 🪄 **Masto successful outcome**: **Masto found more information on the instance and on the admin, including email address.
+
+
 ## ❌ **Tool (unsuccessful) use cases**
 
 **Use case 1**: **Not finding an existing user**:
