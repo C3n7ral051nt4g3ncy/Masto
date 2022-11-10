@@ -15,7 +15,6 @@ import webbrowser
 import re
 import urllib.request
 import urllib.parse
-from pprint import pprint
 
 print(
     """\033[34m
@@ -38,7 +37,7 @@ headers = {
     "accept-language": "en-US;q=0.9,en,q=0,8",
     "accept-encoding": "gzip, deflate",
     "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) Chrome/104.0.0.0 "
-    "Safari/537.36",
+                  "Safari/537.36",
 }
 
 
@@ -334,17 +333,21 @@ def instance_search():
     title = data["title"]
     print("title: ", title)
 
-    descript = data["short_description"]
-    print("description: ", descript)
+    s_description = data["short_description"]
+    invalid_sd_tags = ["<strong>", "</strong>", "<a href=\"", "target=", "</a>", "<a>", "_blank", ">", "<", '"', '<br',
+                       '/>', 'br /', '|']
+    for invalid_sd_tag in invalid_sd_tags:
+        s_description = s_description.replace(invalid_sd_tag, "")
+    print("description: ", s_description)
 
     det_descript = data["description"]
-    invalid_tags = ["<strong>", "</strong>", "<a href=", "target=", "</a>", "<a>","_blank", ">", "<", '"']
+    invalid_tags = ["<strong>", "</strong>", "<a href=", "target=", "</a>", "<a>", "_blank", ">", "<", '"', 'br /', '|']
     for invalid_tag in invalid_tags:
         det_descript = det_descript.replace(invalid_tag, "")
     print("detailed description: ", det_descript)
 
     e_mail = data["email"]
-    print("instance email: ", e_mail)
+    print("\ninstance email: ", e_mail)
 
     thumb = data["thumbnail"]
     print("server thumbnail:", thumb)
@@ -358,8 +361,14 @@ def instance_search():
     reg_approve = data["approval_required"]
     print("admin approval required: ", reg_approve)
 
-    account_data = data["contact_account"]
-    pprint(account_data)
+    print("\ninstance admin information:")
+
+    admin_data = data["contact_account"]
+    for key in ['id', 'username', 'acct', 'display_name', 'followers_count', 'following_count', 'statuses_count',
+                'last_status_at', 'locked', 'bot', 'discoverable', 'group', 'created_at', 'url', 'avatar', 'header']:
+        print(f"{key}: {admin_data[key]}")
+    #print()
+
 
 
 def main():
