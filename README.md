@@ -4,9 +4,20 @@
 
 <br>
 
-[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/C3n7ral051nt4g3ncy/Masto/blob/master/LICENSE) [![security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
+<div align="center">
+
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![HitCount](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto.svg)](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+[![security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
+[![MIT License](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/C3n7ral051nt4g3ncy/Masto/blob/master/LICENSE) 
+<img src="https://img.shields.io/github/v/tag/C3n7ral051nt4g3ncy/Masto?color=bright%20green&label=Version&logo=github">
+[![HitCount](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto.svg)](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto) 
+<img src="https://img.shields.io/github/stars/C3n7ral051nt4g3ncy/Masto?color=bright%20green&logo=github">
+<img src="https://img.shields.io/github/forks/C3n7ral051nt4g3ncy/Masto?color=bright%20green&logoColor=white&logo=github">
+<img src="https://img.shields.io/github/last-commit/C3n7ral051nt4g3ncy/MAsto?color=bright%20green&label=Last%20commit">
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+
+</div>
+
 
 
 ## 🐘 **About Masto**
@@ -86,6 +97,13 @@ on `load more` will give you a 401 error and request the user to log in.
 **Use case 3**: **Getting fully accurate username search results**:
 - Tried searching `OSINT` and `@OSINT` via browser, Mastodon returned quite erratic results, with many accounts that just **begin with** `osint`, such as the user `@Osinttechnical`
 - 🪄 **Masto successful outcome**: **Masto found 3 accurate `@osint`** user accounts from 3 instances.
+
+<br>
+
+**Use case 4**: **Getting information on locked instances**:
+- Tried searching for the instance [0sint.social](https://0sint.social/about), there isn't much information via a browser search.
+- 🪄 **Masto successful outcome**: **Masto found more information on the instance and on the admin, including email address.**
+
 
 ## ❌ **Tool (unsuccessful) use cases**
 
