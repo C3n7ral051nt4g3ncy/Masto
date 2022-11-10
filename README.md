@@ -132,8 +132,10 @@ The **same username** can be found across different instances(servers):
 > There is no global search, the server will reply with what it knows about. If it has not encountered the account, it will not return it in search results.
 
 ## 🙏 **Thanks**
-Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas.
+- Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas.
 I learn a great deal from him, a great instructor and inspiring person.
+- Thanks to [@Roman-Kasianenko](https://github.com/Roman-Kasianenko) for his help.
+
 
 
 ## 📝 **License**
