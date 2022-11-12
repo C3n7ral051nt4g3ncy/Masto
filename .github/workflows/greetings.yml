@@ -1,0 +1,16 @@
+name: Greetings
+
+on: [pull_request_target, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: "Thanks for submitting your first issue for Masto OSINT Tool, let's get this seen to rapidly"
+        pr-message: "Thank you for submitting your first PR (Pull Request) to Masto OSINT Tool, I appreciate your work and will review it shortly"
