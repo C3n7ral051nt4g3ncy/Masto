@@ -1,0 +1,40 @@
+{
+    "Masto license" : ["MIT"],
+    "File Name": ["fediverse_instances.json"],
+    "Usage": ["scan user on all Fediverse instances in order to get a more reliable result than the Mastodon API which has proved to be unreliable”],
+    "author" : ["C3n7ral051nt4g3ncy"],
+
+    
+    "sites" : [
+       {
+        "name" : "mastodon",
+        "uri_check" : "https://mastodon.social/@{account}",
+        "e_code" : 200,
+        "e_string" : "profile:username",
+        "m_string" : "The page you are looking for isn't here.",
+        "m_code" : 404,
+        "known" : ["john", "alex"],
+        "valid" : true
+       },
+       {
+        "name" : "chaos.social",
+        "uri_check" : "https://chaos.social/@{account}",
+        "e_code" : 200,
+        "e_string" : "- chaos.social",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 200,
+        "known" : ["ruslan", "dima"],
+        "valid" : true
+       },
+       {
+        "name" : "mstdn.social",
+        "uri_check" : "https://mstdn.io/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mstdn.io) - Mastodon",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 200,
+        "known" : ["mike", "greg"],
+        "valid" : true
+       }
+    ]
+  }
