@@ -225,6 +225,16 @@
         "m_code" : 404,
         "known" : ["admin", "lianghuan"],
         "valid" : true
+       },
+       {
+        "name" : "awscommunity.social",
+        "uri_check" : "https://awscommunity.social/@{account}",
+        "e_code" : 200,
+        "e_string" : "@awscommunity.social) - AWSCommunity.social</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["Ric", "jaredkschreiber"],
+        "valid" : true
        }
     ]
   }
