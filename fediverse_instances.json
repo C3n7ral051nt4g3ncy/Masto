@@ -155,6 +155,16 @@
         "m_code" : 404,
         "known" : ["strawberry", "lo"],
         "valid" : true
+       },
+       {
+        "name" : "mastodon.uno",
+        "uri_check" : "https://mastodon.uno/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mastodon.uno) - Mastodon Social Italia</title>",
+        "m_string" : "La pagina che stavi cercando non esiste.",
+        "m_code" : 404,
+        "known" : ["filippodb", "quinta"],
+        "valid" : true
        }
     ]
   }
