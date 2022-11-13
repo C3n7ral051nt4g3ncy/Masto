@@ -365,6 +365,16 @@
         "m_code" : 404,
         "known" : ["markusblogde", "Matt_999"],
         "valid" : true
+       },
+       {
+        "name" : "toot.wales",
+        "uri_check" : "https://toot.wales/@{account}",
+        "e_code" : 200,
+        "e_string" : "@toot.wales) - Tŵt Cymru | Toot Wales</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["jaz", "GeraldR"],
+        "valid" : true
        }
     ]
   }
