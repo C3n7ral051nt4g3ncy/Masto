@@ -295,6 +295,16 @@
         "m_code" : 404,
         "known" : ["berkay", "zerqddt"],
         "valid" : true
+       },
+       {
+        "name" : "fedibird",
+        "uri_check" : "https://fedibird.com/@{account}",
+        "e_code" : 200,
+        "e_string" : "@fedibird.com) - Fedibird</title>",
+        "m_string" : "<title>お探しのページは見つかりませんでした",
+        "m_code" : 404,
+        "known" : ["noellabo", "sukekyo"],
+        "valid" : true
        }
     ]
   }
