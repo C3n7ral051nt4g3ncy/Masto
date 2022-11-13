@@ -175,6 +175,16 @@
         "m_code" : 404,
         "known" : ["Curator", "adamk678"],
         "valid" : true
+       },
+       {
+        "name" : "mamot",
+        "uri_check" : "https://mamot.fr/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mamot.fr) - La Quadrature du Net - Mastodon - Media Fédéré</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["LaQuadrature", "blast_info"],
+        "valid" : true
        }
     ]
   }
