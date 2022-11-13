@@ -325,6 +325,16 @@
         "m_code" : 404,
         "known" : ["seb", "CarpeDiemT3ch"],
         "valid" : true
+       },
+       {
+        "name" : "mastodon.gamedev",
+        "uri_check" : "https://mastodon.gamedev.place/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mastodon.gamedev.place) - Gamedev Mastodon</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["aras", "NeverCuteGames"],
+        "valid" : true
        }
     ]
   }
