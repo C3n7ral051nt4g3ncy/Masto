@@ -95,6 +95,16 @@
         "m_code" : 404,
         "known" : ["mstdn_jp", "ilol7"],
         "valid" : true
+       },
+       {
+        "name" : "mastodon.cloud",
+        "uri_check" : "https://mastodon.cloud/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mastodon.cloud) - mastodon.cloud</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["TheAdmin", "Sujiyan"],
+        "valid" : true
        }
     ]
   }
