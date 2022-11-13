@@ -285,6 +285,16 @@
         "m_code" : 404,
         "known" : ["JohanEmpa", "Etain18"],
         "valid" : true
+       },
+       {
+        "name" : "mastodon.turkey",
+        "uri_check" : "https://mastodon.com.tr/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mastodon.com.tr) - mastodon.com.tr</title>",
+        "m_string" : "<title>Aradığınız sayfa bulunamad",
+        "m_code" : 404,
+        "known" : ["berkay", "zerqddt"],
+        "valid" : true
        }
     ]
   }
