@@ -135,6 +135,16 @@
         "m_code" : 404,
         "known" : ["self", "ppressedd"],
         "valid" : true
+       },
+       {
+        "name" : "social.linuxpizza",
+        "uri_check" : "https://social.linux.pizza/@{account}",
+        "e_code" : 200,
+        "e_string" : "@social.linux.pizza) - Linux.Pizza</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["admin", "gnu_stallman"],
+        "valid" : true
        }
     ]
   }
