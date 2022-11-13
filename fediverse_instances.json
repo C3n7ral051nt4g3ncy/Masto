@@ -118,7 +118,7 @@
        },
        {
         "name" : "pawoo",
-        "uri_check" : "https://mas.to/@{account}",
+        "uri_check" : "https://pawoo.net/@{account}",
         "e_code" : 200,
         "e_string" : "@pawoo.net) - Pawoo</title>",
         "m_string" : "<title>The page you are looking for isn&#39;t here.",
