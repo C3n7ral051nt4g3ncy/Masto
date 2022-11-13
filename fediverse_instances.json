@@ -7,7 +7,7 @@
     
     "sites" : [
        {
-        "name" : "mastodon",
+        "name" : "mastodon.social",
         "uri_check" : "https://mastodon.social/@{account}",
         "e_code" : 200,
         "e_string" : "profile:username",
