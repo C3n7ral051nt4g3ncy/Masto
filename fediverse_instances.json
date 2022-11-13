@@ -185,6 +185,27 @@
         "m_code" : 404,
         "known" : ["LaQuadrature", "blast_info"],
         "valid" : true
+       },
+       {
+        "name" : "infosec.exchange",
+        "uri_check" : "https://infosec.exchange/@{account}",
+        "e_code" : 200,
+        "e_string" : "@infosec.exchange) - Infosec Exchange</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["micahlahren", "yeswehack"],
+        "valid" : true
+       },
+       {
+        "name" : "counter.social",
+        "uri_check" : "https://counter.social/@{account}",
+        "e_code" : 200,
+        "e_string" : "@counter.social) - CounterSocial</title>",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["andy", "john"],
+        "valid" : true
        }
     ]
   }
+     
