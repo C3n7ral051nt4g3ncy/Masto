@@ -35,6 +35,26 @@
         "m_code" : 200,
         "known" : ["mike", "greg"],
         "valid" : true
+       },
+       {
+        "name" : "meow.social",
+        "uri_check" : "https://meow.social/@{account}",
+        "e_code" : 200,
+        "e_string" : "- the mastodon instances for creatures</title>",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["meow", "novra"],
+        "valid" : true
+       },
+       {
+        "name" : "mastodon.online",
+        "uri_check" : "https://mastodon.online/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mastodon.online) - Mastodon</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["Gargron", "RDHale"],
+        "valid" : true
        }
     ]
   }
