@@ -195,6 +195,16 @@
         "m_code" : 404,
         "known" : ["ruud", "fistwerk"],
         "valid" : true
+       },
+       {
+        "name" : "troet.cafe",
+        "uri_check" : "https://troet.cafe/@{account}",
+        "e_code" : 200,
+        "e_string" : "@troet.cafe) - troet.cafe - Mastodon</title>",
+        "m_string" : <title>Die Seite nach der du gesucht hast wurde nicht gefunden.",
+        "m_code" : 404,
+        "known" : ["martinmuc", "funnzl"],
+        "valid" : true
        }
     ]
   }
