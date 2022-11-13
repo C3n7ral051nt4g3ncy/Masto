@@ -385,6 +385,16 @@
         "m_code" : 404,
         "known" : ["adam", "Alphakilopapa"],
         "valid" : true
+       },
+       {
+        "name" : "nrw.social",
+        "uri_check" : "https://nrw.social/@{account}",
+        "e_code" : 200,
+        "e_string" : @nrw.social) - NRW.social</title>",
+        "m_string" : "Die Seite nach der du gesucht hast wurde nicht gefunden.",
+        "m_code" : 404,
+        "known" : ["dbeaver", "Lordoftzewords"],
+        "valid" : true
        }
     ]
   }
