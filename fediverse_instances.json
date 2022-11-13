@@ -185,6 +185,16 @@
         "m_code" : 404,
         "known" : ["micahlahren", "yeswehack"],
         "valid" : true
+       },
+       {
+        "name" : "mastodon.world",
+        "uri_check" : "https://mastodon.world/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mastodon.world) - Mastodon</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["ruud", "fistwerk"],
+        "valid" : true
        }
     ]
   }
