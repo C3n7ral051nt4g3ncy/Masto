@@ -355,6 +355,16 @@
         "m_code" : 404,
         "known" : ["dcid", "inushin"],
         "valid" : true
+       },
+       {
+        "name" : "mastodontech.de",
+        "uri_check" : "https://mastodontech.de/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mastodontech.de) - MastodonTech.de</title>",
+        "m_string" : "<title>Die Seite nach der du gesucht hast wurde nicht gefunden.",
+        "m_code" : 404,
+        "known" : ["markusblogde", "Matt_999"],
+        "valid" : true
        }
     ]
   }
