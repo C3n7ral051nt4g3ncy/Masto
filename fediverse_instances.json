@@ -125,6 +125,16 @@
         "m_code" : 404,
         "known" : ["aruseiyu10", "Lipp"],
         "valid" : true
+       },
+       {
+        "name" : "lgbt",
+        "uri_check" : "https://lgbt.io/@{account}",
+        "e_code" : 200,
+        "e_string" : "lgbt.io) - LGBT.io</title>",
+        "m_string" : "Mastodon Glitch Edition</title>",
+        "m_code" : 404,
+        "known" : ["self", "ppressedd"],
+        "valid" : true
        }
     ]
   }
