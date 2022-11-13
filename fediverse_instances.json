@@ -265,6 +265,16 @@
         "m_code" : 404,
         "known" : ["mdent123a", "zuriberry"],
         "valid" : true
+       },
+       {
+        "name" : "social.tchncs",
+        "uri_check" : "https://social.tchncs.de/@{account}",
+        "e_code" : 200,
+        "e_string" : "@social.tchncs.de) - Mastodon</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["milan", "Brackmeister"],
+        "valid" : true
        }
     ]
   }
