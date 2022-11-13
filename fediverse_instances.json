@@ -145,6 +145,16 @@
         "m_code" : 404,
         "known" : ["admin", "gnu_stallman"],
         "valid" : true
+       },
+       {
+        "name" : "cmx.im",
+        "uri_check" : "https://m.cmx.im/@{account}",
+        "e_code" : 200,
+        "e_string" : "@m.cmx.im) - 长毛象中文站</title>",
+        "m_string" : "- Mastodon</title>",
+        "m_code" : 404,
+        "known" : ["strawberry", "lo"],
+        "valid" : true
        }
     ]
   }
