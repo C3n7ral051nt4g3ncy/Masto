@@ -315,6 +315,16 @@
         "m_code" : 404,
         "known" : ["Polestar", "distributionbox"],
         "valid" : true
+       },
+       {
+        "name" : "ioc.exchange",
+        "uri_check" : "https://ioc.exchange/@{account}",
+        "e_code" : 200,
+        "e_string" : "@ioc.exchange) - IOC.exchange</title",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["seb", "CarpeDiemT3ch"],
+        "valid" : true
        }
     ]
   }
