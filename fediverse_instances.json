@@ -335,6 +335,16 @@
         "m_code" : 404,
         "known" : ["aras", "NeverCuteGames"],
         "valid" : true
+       },
+       {
+        "name" : "det.social",
+        "uri_check" : "https://det.social/@{account}",
+        "e_code" : 200,
+        "e_string" : "@det.social) - det.social</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["stefan", "janstraube"],
+        "valid" : true
        }
     ]
   }
