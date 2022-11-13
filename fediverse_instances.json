@@ -305,6 +305,16 @@
         "m_code" : 404,
         "known" : ["noellabo", "sukekyo"],
         "valid" : true
+       },
+       {
+        "name" : "wxw.moe",
+        "uri_check" : "https://wxw.moe/@{account}",
+        "e_code" : 200,
+        "e_string" : "@wxw.moe) - 呜呜",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["Polestar", "distributionbox"],
+        "valid" : true
        }
     ]
   }
