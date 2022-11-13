@@ -205,6 +205,16 @@
         "m_code" : 404,
         "known" : ["martinmuc", "funnzl"],
         "valid" : true
+       },
+       {
+        "name" : "mastodon.scot",
+        "uri_check" : "https://mastodon.scot/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mastodon.scot) - mastodon.scot</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["trumpet", "AlanCumming"],
+        "valid" : true
        }
     ]
   }
