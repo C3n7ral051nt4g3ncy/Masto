@@ -159,6 +159,14 @@ The **same username** can be found across different instances(servers):
 
 <br>
 
+## Masto Community Mentions
+
+- Mentionned in [Week in OSINT](https://sector035.nl/articles/2022-45) `#2022-45` by [@Sector035](https://github.com/Sector035)
+
+
+
+<br>
+
 ## 🙏 **Thanks**
 - Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas. I learn a great deal from him, and he is a great instructor & inspiring person.
 - Thanks to [@Roman-Kasianenko](https://github.com/Roman-Kasianenko) for his help.
