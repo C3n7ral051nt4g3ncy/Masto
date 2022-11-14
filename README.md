@@ -103,11 +103,11 @@
 | **Use case 1**    | **Searching for a user and bypassing the profile directory opt-out**|
 | ----------------  |:------------------------------------------------------------------:| 
 
-- Tried searching via browser both terms `Webbreacher` and `@Webbreacher`: **1 result** --> `@Webbreacher@mastodon.social`            
-- Searched `Webbreacher` on **Masto**: **3 results** (✅ 3 accounts found)
+- Tried searching via browser both terms `Webbreacher` and `@Webbreacher` **1 result** --> `@Webbreacher@mastodon.social`            
+- Searched `Webbreacher` on **Masto**: **3 results** --> ✅ 3 accounts found
 - On the `counter.social` profile, `@Webbreacher's` settings are --> user opted to be on the profile directory = `False`, this is why the browser search didn't find the counter.social profile! 
 
-🪄 **Masto successful outcome**: **Masto found both accounts**.
+🪄 **Masto successful outcome**: **Masto found all 3 accounts**.
 
 <br>
 <br>
