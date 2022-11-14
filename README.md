@@ -66,6 +66,16 @@
 
 <br>
 
+## Masto Workflow
+
+<img width="933" src="https://user-images.githubusercontent.com/104733166/201748872-60872350-3c70-4988-b3c0-31e3ca194a27.png">
+
+<br>
+
+![](assets/workflow.png)
+
+<br>
+
 ## 🛠️ **Installation**
 
 ```git clone https://github.com/C3n7ral051nt4g3ncy/Masto```
