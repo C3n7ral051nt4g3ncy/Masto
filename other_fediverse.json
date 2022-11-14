@@ -10,9 +10,7 @@
         "name" : "diaspora",
         "uri_check" : "https://diasp.org/u/{account}",
         "e_code" : 200,
-        "e_string" : "@diasp.org
-
-</title>",
+        "e_string" : "@diasp.org",
         "m_string" : "<title>The page you were looking for doesn't exist (404)",
         "m_code" : 404,
         "known" : ["ictus", "fedora"],
