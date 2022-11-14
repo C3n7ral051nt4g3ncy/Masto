@@ -1,7 +1,7 @@
 {
     "Masto license" : ["MIT"],
     "File Name": ["fediverse_instances.json"],
-    "Usage": ["scan user on all Fediverse instances in order to get a more reliable result than the Mastodon API"],
+    "Usage": ["scan user on all Mastodon (Fediverse) instances in order to get a more reliable result than the Mastodon API"],
     "author" : ["C3n7ral051nt4g3ncy"],
 
     
