@@ -20,11 +20,12 @@
 </div>
 
 
-
 ## 🐘 **About Masto**
 
 **Masto provides information/intelligence on [Mastodon.social](https://mastodon.social) users and fediverse instances (servers).** 
+
 <br>
+
 ## 🚀 **Masto capabilities**
 **Masto OSINT Tool** helps to:
 - Find user ID
@@ -62,6 +63,8 @@
 - Check if instance admin account is locked
 - Check if registration is required and if the admin needs to approve the request
 - Check if the admin is a bot 
+
+<br>
 
 ## 🛠️ **Installation**
 
