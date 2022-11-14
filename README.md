@@ -133,7 +133,7 @@ The **same username** can be found across different instances(servers):
 
 ## 🙏 **Thanks**
 - Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas.
-I learn a great deal from him, a great instructor and inspiring person.
+I learn a great deal from him, and he is a great instructor & inspiring person.
 - Thanks to [@Roman-Kasianenko](https://github.com/Roman-Kasianenko) for his help.
 
 
@@ -141,6 +141,6 @@ I learn a great deal from him, a great instructor and inspiring person.
 ## 📝 **License**
 
 [MIT License](https://opensource.org/licenses/MIT) <br>
-*Tool made for the OSINT and Cyber community, feel free to contribute code.*
+*Tool made for the OSINT and Cyber community, feel free to contribute  **```code```** .*
 
 <img width="66" src="https://user-images.githubusercontent.com/104733166/200310377-be6d8187-8366-4968-b730-a5c215b310ec.png">
