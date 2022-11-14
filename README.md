@@ -153,7 +153,7 @@ The **same username** can be found across different instances(servers):
 - I asked the Mastodon Team about this api issue, they replied:
 > There is no global search, the server will reply with what it knows about. If it has not encountered the account, it will not return it in search results.
 
-- 🟢 **Masto v2.0 fixes this**, the scan of Masto's own instances comes in support of Mastodon's API and picks up on things the API missed.
+- 🟢 **Masto v2.0 fixes this**, the scan of Masto's own json instances list comes in support of Mastodon's API and picks up on things the API missed.
 - **v2.0 is 100% reliable** if the server is listed in the Masto ```fediverse_instances.json``` file.
 - This fix is thanks to [@Webbreacher](https://github.com/WebBreacher) who suggested this feature.
 
