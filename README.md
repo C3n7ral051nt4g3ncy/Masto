@@ -22,7 +22,7 @@
 
 ## 🐘 **About Masto**
 
-**Masto provides information/intelligence on [Mastodon.social](https://mastodon.social) users** 
+**Masto provides information/intelligence on [Mastodon.social](https://mastodon.social) users and instances (servers)** 
 <br>
 ## 🚀 **Masto capabilities**
 **Masto OSINT Tool** helps to:
