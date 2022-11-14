@@ -2,3 +2,4 @@ requests
 bs4
 tqdm
 urllib3
+argparse

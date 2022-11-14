@@ -1,21 +1,25 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 # Code style         : Black
-# Tool name          : Masto
+# Tool name          : Masto (v2.0)
 # File name          : masto.py
 # Author             : C3n7ral051nt4g3ncy(@OSINT_Tactical)
 
+
+# Modules
 import time
-import requests
 import json
-from bs4 import BeautifulSoup
 from tqdm import tqdm
 import sys
 import webbrowser
-import re
-import urllib.request
-import urllib.parse
+import requests
+import argparse
+from bs4 import BeautifulSoup
+from pprint import pprint
+from w3lib.html import remove_tags
 
+
+# banner
 print(
     """\033[34m
 ███╗   ███╗ █████╗ ███████╗████████╗ ██████╗
@@ -23,62 +27,124 @@ print(
 ██╔████╔██║███████║███████╗   ██║   ██║   ██║
 ██║╚██╔╝██║██╔══██║╚════██║   ██║   ██║   ██║
 ██║ ╚═╝ ██║██║  ██║███████║   ██║   ╚██████╔╝
-╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝    ╚═════╝v0.1\033[0m"""
+╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝    ╚═════╝v2.0\033[0m"""
 )
-print("Mastodon OSINT Tool")
+print("\033[34m\033[1mMastodon OSINT Tool\033[0m")
 print("by @C3n7ral051nt4g3ncy ")
 print(
     "https://ko-fi.com/tacticalintelanalyst\n"
-    "BTC: bc1q66awg48m2hvdsrf62pvev78z3vkamav7chusde"
+    "BTC: bc1q66awg48m2hvdsrf62pvev78z3vkamav7chusde\n"
 )
 
-headers = {
-    "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "accept-language": "en-US;q=0.9,en,q=0,8",
-    "accept-encoding": "gzip, deflate",
-    "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) Chrome/104.0.0.0 "
-                  "Safari/537.36",
-}
-
-
-def status():
-    url = "https://mastodon.social/api/v2/search?q=mastodon"
-    request = requests.get(url)
-    if request.status_code == 200:
-        print("\n\033[32m\033[1mMastodon API is ready to rooooooll!\033[0m")
-    else:
-        print("\n\033[31m\033[1mserver response failed, try again later\033[0m")
+# search mastodon instances (servers)
+def instance_search(instance):
+    headers = {
+        "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "accept-language": "en-US;q=0.9,en,q=0,8",
+        "accept-encoding": "gzip, deflate",
+        "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) "
+        "Chrome/104.0.0.0 Safari/537.36",
+    }
+    inst_url = f"https://{instance}/api/v1/instance.json"
+    try:
+        response = requests.request("GET", inst_url, headers=headers)
+        inst_data = json.loads(response.text)
+    except Exception as e:
+        inst_data = {}
+    for _ in tqdm(range(10)):
+        time.sleep(0.03)
+    if not inst_data:
+        print(
+            f"\n\033[31mMastodon instance\033[1m [{instance}]\033[0m\033[31m NOT found!\033[0m"
+        )
         return
+    name = inst_data["uri"]
+    print("\ninstance (server): ", name)
+    title = inst_data["title"]
+    print("title: \033[32m\033[1m", title)
+    s_description = inst_data["short_description"]
+    s_description = remove_tags(s_description)
+    print("\033[0mdescription: ", s_description)
+    det_descript = inst_data["description"]
+    invalid_tags = [
+        "<strong>",
+        "</strong>",
+        "<a href=",
+        "target=",
+        "</a>",
+        "<a>",
+        "_blank",
+        ">",
+        "<",
+        '"',
+        "br /",
+        "|",
+    ]
+    for invalid_tag in invalid_tags:
+        det_descript = det_descript.replace(invalid_tag, "")
+    print("detailed description: ", det_descript)
+    e_mail = inst_data["email"]
+    print("\ninstance email: \033[32m\033[1m", e_mail)
+    thumb = inst_data["thumbnail"]
+    print("\033[0mserver thumbnail:", thumb)
+    lang = inst_data["languages"]
+    print("instance languages: ", lang)
+    reg = inst_data["registrations"]
+    print("registration needed: ", reg)
+    reg_approve = inst_data["approval_required"]
+    print("admin approval required: ", reg_approve)
+    print("\ninstance admin information:")
+    admin_data = inst_data["contact_account"]
+    for key in [
+        "id",
+        "username",
+        "acct",
+        "display_name",
+        "followers_count",
+        "following_count",
+        "statuses_count",
+        "last_status_at",
+        "locked",
+        "bot",
+        "discoverable",
+        "group",
+        "created_at",
+        "url",
+        "avatar",
+        "header",
+    ]:
+        print(f"{key}: {admin_data[key]}")
 
 
-def all_servers_search():
-    print("\nInput username \033[1mWITHOUT the @ symbol\033[0m in front!")
-    query = input("\033[1mUsername: \033[0m")
-    user = query
-    url = f"https://mastodon.social/api/v2/search?q={user}"
+# search username with Mastodon API
+def username_search_api(username):
+    url = f"https://mastodon.social/api/v2/search?q={username}"
     response = requests.request("GET", url)
     data = json.loads(response.text)
 
     for _ in tqdm(range(10)):
-        time.sleep(0.06)
+        time.sleep(0.03)
 
     if response.text == ('{"accounts":[],"statuses":[],"hashtags":[]}'):
-        print(f"\n\033[1m\033[31muser [{user}] NOT found!\033[0m")
-        print("try below searching only on Mastodon.social")
+        print(
+            f"\n\033[1m\033[31mTarget username: [{username}] NOT found using the Mastodon API!\033[0m"
+        )
         return
     time.sleep(1)
 
-    data = filter(lambda x: x.get("username").lower() == user.lower(), data["accounts"])
+    data = filter(
+        lambda x: x.get("username").lower() == username.lower(), data["accounts"]
+    )
     for index, intelligence in enumerate(list(data), start=1):
 
         print("\n\n══════════")
-        print(f"\033[1mAccount: {index}\033[0m")
+        print(f"\033[32m\033[1mAccount: {index}\033[0m")
         print("══════════\n")
 
         identity = intelligence["id"]
         lock = intelligence["locked"]
         pro_url = intelligence["url"]
-        username = intelligence["username"]
+        target_username = intelligence["username"]
         account = intelligence["acct"]
         dispn = intelligence["display_name"]
         creation_date = intelligence["created_at"]
@@ -92,13 +158,13 @@ def all_servers_search():
         note = intelligence["note"]
         avt = intelligence["avatar"]
 
-        print("user ID:", identity)
-        print("profile url:", pro_url)
+        print("user ID:\033[32m\033[1m", identity)
+        print("\033[0mprofile url:", pro_url)
         print("account locked:", lock)
-        print("username:", username)
-        print("account:", account)
-        print("display Name:", dispn)
-        print("profile creation date:", creation_date)
+        print("username:", target_username)
+        print("\033[0maccount:\033[32m\033[1m", account)
+        print("\033[0mdisplay Name:\033[32m\033[1m", dispn)
+        print("\033[0mprofile creation date:", creation_date)
         print("user is a bot:", bot)
         print("user opted to be listed on the profile directory:", dscvr)
         print("followers:", fwers)
@@ -135,257 +201,119 @@ def all_servers_search():
         print("user bio:", note)
         print("user's avatar link:", avt)
 
-        choice = input("\033[1mopen avatar in browser | Y or N: \033[0m")
+        choice = input("\033[1mopen avatar in browser | [Y|N]: \033[0m")
         if choice in ["y", "Y", "YES", "yes"]:
             webbrowser.open(avt)
         if choice in ["n", "N", "NO", "no"]:
             continue
 
 
-def mastodon_search():
-    print("\n\n═══════════════════════════════════════")
-    print("\033[34m\033[1mhttps://mastodon.social\033[0m")
-    print("\033[34mSearch for user \033[1mONLY on Mastodon.social\033[0m")
-    print("═══════════════════════════════════════")
-    print("\nInput username \033[1mWITHOUT the @ symbol\033[0m in front!")
-    query = input("\033[1mUsername: \033[0m")
-    user = query
-    url = f"https://mastodon.social/@{user}.json"
-    response = requests.request("GET", url)
-    data = json.loads(response.text)
-
+# username search with the Mzsto OSINT Tool servers database
+def username_search(username):
+    print("\n")
+    print(
+        f"Preparing to scan for target -->\033[32m\033[1m {username}\033[0m on the \033[32m\033[1m"
+        f"Masto OSINT Tool servers database\033[0m\033[0m\n"
+    )
+    time.sleep(6)
     for _ in tqdm(range(10)):
         time.sleep(0.03)
+    headers = {
+        "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "accept-language": "en-US;q=0.9,en,q=0,8",
+        "accept-encoding": "gzip, deflate",
+        "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) "
+        "Chrome/104.0.0.0 Safari/537.36",
+    }
 
-    if "error" in data and data["error"] == "Not Found":
-        print(f"\n\033[1m\033[31muser [{user}] NOT found!\033[0m")
-        return
+    response = requests.get(
+        "https://raw.githubusercontent.com/C3n7ral051nt4g3ncy/Masto/master/fediverse_instances.json"
+    )
+    sites = response.json()["sites"]
+    is_any_site_matched = False
+    for site in sites:
+        uri_check = site["uri_check"]
+        site_name = site["name"]
+        uri_check = uri_check.format(account=username)
 
-    proflink = data["id"]
-    name = data["name"]
-    persbot = data["type"]
-    profdisc = data["discoverable"]
-    prefuser = data["preferredUsername"]
-    basicinfo = data["summary"]
-    jdate = data["published"]
-    fwersapprove = data["manuallyApprovesFollowers"]
-    pubkey = data["publicKey"]
-    fwerslink = data["followers"]
-    fwinglink = data["following"]
+        try:
+            res = requests.get(uri_check, headers=headers)
 
-    print("\nprofile url:", proflink)
-    print("discoverable through recommendations and trends:", profdisc)
-    print("person or bot:", persbot)
-    print("name:", name)
-    print("preferred username:", prefuser)
+            estring_pos = res.text.find(site["e_string"]) > 0
 
-    bad_tags = [
-        "<p>",
-        "</p>",
-        "</a>",
-        "</span>",
-        "<span>",
-        "<a href",
-        '"',
-        "<",
-        ">",
-        "class=",
-        "rel=tag",
-        "=",
-    ]
-    for bad_tag in bad_tags:
-        basicinfo = basicinfo.replace(bad_tag, "")
-    print("bio:", basicinfo)
-
-    bad_date_tag = ["T00:00:00Z"]
-    for bad_date_tag in bad_date_tag:
-        jdate = jdate.replace(bad_date_tag, "")
-    print("joined Mastodon on:", jdate)
-    print("user approves followers manually:", fwersapprove)
-    print("public key:", pubkey)
-    print("link to user followers:", fwerslink)
-    print("link to accounts user is following:", fwinglink)
-
-    attachments = []
-    for attachment in data.get("attachment", []):
-        name = attachment.get("name")
-        soup = BeautifulSoup(attachment.get("value"), "html.parser")
-        a = soup.find("a")
-        attachments.append(f'--> {name}: {a.get("href")}')
-
-    print(f"sites found :")
-    for attachment in attachments:
-        print(f"\t {attachment}")
-
-    tagsurl = f"https://mastodon.social/users/{user}/collections/tags.json"
-    resp = requests.request("GET", tagsurl)
-    tags_data = json.loads(resp.text)
-    htags_numb = tags_data["totalItems"]
-    items = " | ".join([t.get("name") for t in tags_data.get("items", [])])
-    print("number of Hashtags found:", htags_numb)
-    print(f"hashtags found --> {items}")
-
-
-def mstdn_search():
-    print("\n\n════════════════════════════════════")
-    print("\033[35m\033[1mhttps://mstdn.social\033[0m")
-    print("\033[35mSearch for user \033[1mONLY on mstdn.social\033[0m")
-    print("\033[35mCan provide additional info\033[0m")
-    print("════════════════════════════════════")
-    print("\nInput username \033[1mWITHOUT the @ symbol\033[0m in front!")
-    query = input("\033[1mUsername: \033[0m")
-    user = query
-    url = f"https://mstdn.social/@{user}.json"
-    response = requests.request("GET", url)
-    data = json.loads(response.text)
-
-    for _ in tqdm(range(10)):
-        time.sleep(0.03)
-
-    if "error" in data and data["error"] == "Not Found":
-        print(f"\n\033[1m\033[31muser [{user}] NOT found!\033[0m")
-        return
-
-    proflink = data["id"]
-    name = data["name"]
-    persorbot = data["type"]
-    profdisc = data["discoverable"]
-    prefuser = data["preferredUsername"]
-    basicinfo = data["summary"]
-    jdate = data["published"]
-    fwersapprove = data["manuallyApprovesFollowers"]
-    pubkey = data["publicKey"]
-    fwerslink = data["followers"]
-    fwinglink = data["following"]
-
-    print("\nprofile url:", proflink)
-    print("discoverable through recommendations/trends:", profdisc)
-    print("person or bot:", persorbot)
-    print("name:", name)
-    print("preferred username:", prefuser)
-
-    bad_tags = [
-        "<p>",
-        "</p>",
-        "</a>",
-        "</span>",
-        "<span>",
-        "<a href",
-        '"',
-        "<",
-        ">",
-        "class=",
-        "rel=tag",
-        "=",
-    ]
-    for bad_tag in bad_tags:
-        basicinfo = basicinfo.replace(bad_tag, "")
-    print("bio:", basicinfo)
-
-    bad_date_tag = ["T00:00:00Z"]
-    for bad_date_tag in bad_date_tag:
-        jdate = jdate.replace(bad_date_tag, "")
-    print("joined mstdn on:", jdate)
-    print("user approves followers manually:", fwersapprove)
-    print("public key:", pubkey)
-    print("link to user followers:", fwerslink)
-    print("link to accounts user is following:", fwinglink)
-
-    attachments = []
-    for attachment in data.get("attachment", []):
-        name = attachment.get("name")
-        soup = BeautifulSoup(attachment.get("value"), "html.parser")
-        a = soup.find("a")
-        attachments.append(f'-->{name}: {a.get("href")}')
-
-    print(f"sites found :")
-    for attachment in attachments:
-        print(f"\t {attachment}")
-
-
-def instance_search():
-    print("\n\n═══════════════════════════════════════")
-    print("\033[32mFind information \033[1mon instance (server)\033[0m")
-    print("\033[32mExample: social.network.europa.eu\033[0m")
-    print("═══════════════════════════════════════")
-    print("\nInput instance (server) name \033[1mWITHOUT the @ symbol\033[0m in front!")
-    query = input("\033[1mInstance: \033[0m")
-    instance = query
-    url = f"https://{instance}/api/v1/instance.json"
-    try:
-        response = requests.request("GET", url)
-        data = json.loads(response.text)
-    except Exception as e:
-        data = {}
-
-    for _ in tqdm(range(10)):
-        time.sleep(0.03)
-
-    if not data:
-        print(
-            f"\n\033[31minstance\033[1m [{instance}]\033[0m\033[31m NOT found!\033[0m"
-        )
-        return
-
-    name = data["uri"]
-    print("\ninstance (server): " + name)
-
-    title = data["title"]
-    print("title: ", title)
-
-    s_description = data["short_description"]
-    invalid_sd_tags = ["<strong>", "</strong>", "<a href=\"", "target=", "</a>", "<a>", "_blank", ">", "<", '"', '<br',
-                       '/>', 'br /', '|']
-    for invalid_sd_tag in invalid_sd_tags:
-        s_description = s_description.replace(invalid_sd_tag, "")
-    print("description: ", s_description)
-
-    det_descript = data["description"]
-    invalid_tags = ["<strong>", "</strong>", "<a href=", "target=", "</a>", "<a>", "_blank", ">", "<", '"', 'br /', '|']
-    for invalid_tag in invalid_tags:
-        det_descript = det_descript.replace(invalid_tag, "")
-    print("detailed description: ", det_descript)
-
-    e_mail = data["email"]
-    print("\ninstance email: ", e_mail)
-
-    thumb = data["thumbnail"]
-    print("server thumbnail:", thumb)
-
-    lang = data["languages"]
-    print("instance languages: ", lang)
-
-    reg = data["registrations"]
-    print("registation needed: ", reg)
-
-    reg_approve = data["approval_required"]
-    print("admin approval required: ", reg_approve)
-
-    print("\ninstance admin information:")
-
-    admin_data = data["contact_account"]
-    for key in ['id', 'username', 'acct', 'display_name', 'followers_count', 'following_count', 'statuses_count',
-                'last_status_at', 'locked', 'bot', 'discoverable', 'group', 'created_at', 'url', 'avatar', 'header']:
-        print(f"{key}: {admin_data[key]}")
-    #print()
-
-
-
-def main():
-    status()
-    all_servers_search()
-    mastodon_search()
-    mstdn_search()
-    instance_search()
-
-
-if __name__ == "__main__":
-    while True:
-        main()
-
-        choice = input("\033[1m\nsearch for another user | Y or N: \033[0m")
-        if choice in ["y", "Y", "YES", "yes"]:
+        except Exception as e:
             continue
-        if choice in ["n", "N", "NO", "no"]:
-            print("\n\033[35mBye-Bye 👋")
-            break
+
+        if res.status_code == 200 and estring_pos:
+            is_any_site_matched = True
+            print("\033[32m-" * 77)
+            print(
+                f"\033[32m[+] \033[1mTarget found\033[0m\033[32m ✓ on:\033[1m\033[40m{site_name}\033[0m"
+            )
+            print(f"\033[32m[+] Profile URL:\033[1m{uri_check}\033[0m")
+            print("\033[32m\033[1m-\033[0m" * 77)
+
+    if not is_any_site_matched:
+        print(
+            f"\n\033[1m\033[31mTarget username: [{username}] NOT found on the Masto OSINT Tool servers database!\033[0m"
+        )
+    return is_any_site_matched
+
+
+# main
+if __name__ == "__main__":
+
+    # argparse arguments
+    parser = argparse.ArgumentParser(
+        description="Masto OSINT Tool help --> "
+        "\033[32m\033[1m[For username]\033[0m: input without @ symbol |"
+        "\033[32m\033[1m [For server]\033[0m: input without https in"
+        " front | example: \033[35m\033[1minfosec.exchange\033[0m"
+    )
+
+    parser.add_argument(
+        "-u",
+        "--username",
+        help="\033[32m\033[1m\ntarget username search across hundreds of Mastodon instances\033[0m",
+    )
+
+    parser.add_argument(
+        "-i",
+        "--instance",
+        help="\033[32m\033[1m\ninstance (server)\033[0m",
+    )
+
+    # args settings
+    args = parser.parse_args()
+
+    if len(sys.argv) == 1:
+        print(
+            "You did not pass an argument | For Help --> \033[32m\033[1mpython3 masto.py -h\033[0m"
+        )
+        sys.exit(1)
+
+    instance = args.instance
+    username = args.username
+
+    # Loop Instance Search
+    if instance:
+        while True:
+            instance_found = instance_search(instance)
+
+            yes_no = input("\nCheck another instance? [yes|no]: ")
+            if yes_no.lower() == "no":
+                break
+            else:
+                instance = input("type new instance: ")
+
+    # Loop target username search across all instances with API and Masto OSINT tool database
+    if username:
+        while True:
+            api_user_found = username_search_api(username)
+            user_found = username_search(username)
+
+            yes_no = input("\nTry another username? [yes|no]: ")
+            if yes_no.lower() == "no":
+                break
+            else:
+                username = input("Type new username: ")
