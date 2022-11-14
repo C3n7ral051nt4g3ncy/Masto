@@ -159,7 +159,7 @@ The **same username** can be found across different instances(servers):
 
 <br>
 
-## Masto Community Mentions
+## Community mentions about Masto
 
 - Mentionned in [Week in OSINT](https://sector035.nl/articles/2022-45) `#2022-45` by [@Sector035](https://github.com/Sector035)
 
