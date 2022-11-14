@@ -425,6 +425,16 @@
         "m_code" : 404,
         "known" : ["ericconrad", "webbreacher"],
         "valid" : true
+       },
+       {
+        "name" : "EU_Voice",
+        "uri_check" : "https://social.network.europa.eu/@{account}",
+        "e_code" : 200,
+        "e_string" : "@social.network.europa.eu) - EU Voice</title>",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["EDPS_supervisor", "admin"],
+        "valid" : true
        }
     ]
   }
