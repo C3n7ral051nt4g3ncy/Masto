@@ -7,6 +7,7 @@
 <div align="center">
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+ <img width="77" src="https://user-images.githubusercontent.com/104733166/201745432-e10240ca-a742-40d8-98e4-1b83a011d159.png">
 [![security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
 [![MIT License](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/C3n7ral051nt4g3ncy/Masto/blob/master/LICENSE) 
 <img src="https://img.shields.io/github/v/tag/C3n7ral051nt4g3ncy/Masto?color=bright%20green&label=Version&logo=github">
@@ -27,29 +28,24 @@
 ## 🚀 **Masto capabilities**
 **Masto OSINT Tool** helps to:
 - Find user ID
-- Find exact username match across instances (the tool currently pulls 3 accounts with the username **```OSINT```** from 3 instances, whereas the mastodon.social search bar browser search returns one result, and returns many accounts that only start with ```osint```, such as ```osinttechnical```, but no exact match is found through a search done via browser.
-- Find all (possible) accounts belonging to a user without logging in to Mastodon (**Mastodon requires users to log in and after the first 5 results you get**: ```401 Search queries pagination is not supported without authentication```
-- Find username correlation (can't be found by searching on the Mastodon.social website)
+- Find exact username match across instances (the tool currently pulls many accounts with the username **```OSINT```**, whereas the mastodon.social (browser search bar) returns one result, as well as returning unreliable results, such as accounts that only start with ```osint```
+- Find all accounts belonging to a user without logging in to Mastodon (**Mastodon requires users to log in and after 5 results you get**: ```401 Search queries pagination is not supported without authentication```
+- Find username correlation (can't be found by browser)
 - Check if the user is a bot 
-- Check if the user has to approve followers manually
 - Check if the account is a group
 - Check if the account is locked
 - Check if the user opted to be listed on the profile directory
-- Get avatar link witn an **additional choice** of opening the avatar in your browser
+- Get avatar link with an **additional choice** of opening the avatar within your browser
 - Get profile creation date
 - Get number of followers & following
 - Get number of posts
-- Get user last message date 
+- Get user last status date 
 - Get user's bio
-- Get user's hashtags
-- Get header image link
-- Get link to followers and following
-- Get user public key (PEM -Privacy-enhanced Electronic Mail) 
 
 ### **Additional instance (server) feature**
 **This is a nice feature**, if you type ```social.network.europa.eu``` on [Mastodon.social](https://mastodon.social/search) , you won't get a result as the instance is set to ```not discoverable```. <br>
 
-This function helps to:
+**This function helps to**:
 - Get information on an instance
 - Get instance Admin ID
 - Get instance email 
@@ -73,70 +69,88 @@ This function helps to:
 <br>
 <br>
 ```pip3 install -r requirements.txt```
-<br>
-<br>
-```python3 masto.py```
-
-## ⭐ **Tool (successful) use cases**
-
-**Use case 1**: **Searching for a user and bypassing the profile directory option**:
-- Tried searching via browser both terms `webbreacher` and `@Webbreacher`: **1 result** --> `@Webbreacher@mastodon.social`
-- Searched `Webbreacher` on **Masto**: 2 results --> **`@Webbreacher@mastodon.social`** + **`@Webbreacher@counter.social`**
-- On the counter.social profile, `@Webbreacher's` settings are --> user opted to be on the profile directory = `False`, this is why the browser search didn't find the counter.social profile!
-- 🪄 **Masto successful outcome**: **Masto found both accounts**.
 
 <br>
 
-**Use case 2**: **Searching without getting a 401 error**:
-- Many people don't want an account on Mastodon, if you don't have an account, you can search on Mastodon but you will only get 5 results. Clicking
-on `load more` will give you a 401 error and request the user to log in.
-- 🪄 **Masto successful outcome**: **You can use Masto without logging in to Mastodon**, you won't get a 401 error.
+## 👨‍💻 **Usage**
+
+- Help:
+```python3 masto.py -h```
+
+- Searching for a user
+```python3 masto.py -u {username}```
+
+- Searching for an instance
+```python3 masto.py -i {instance}```
 
 <br>
 
-**Use case 3**: **Getting fully accurate username search results**:
-- Tried searching `OSINT` and `@OSINT` via browser, Mastodon returned quite erratic results, with many accounts that just **begin with** `osint`, such as the user `@Osinttechnical`
-- 🪄 **Masto successful outcome**: **Masto found 3 accurate `@osint`** user accounts from 3 instances.
+## ⭐ **Tool use cases**
+
+| **Use case 1**    | **Searching for a user and bypassing the profile directory opt-out**|
+| ----------------  |:------------------------------------------------------------------:| 
+
+- Tried searching via browser both terms `Webbreacher` and `@Webbreacher`: **1 result** --> `@Webbreacher@mastodon.social`            
+- Searched `Webbreacher` on **Masto**: **3 results** (✅ 3 accounts found)
+- On the `counter.social` profile, `@Webbreacher's` settings are --> user opted to be on the profile directory = `False`, this is why the browser search didn't find the counter.social profile! 
+
+🪄 **Masto successful outcome**: **Masto found both accounts**.
 
 <br>
+<br>
 
-**Use case 4**: **Getting information on locked instances**:
-- Tried searching for the instance [0sint.social](https://0sint.social/about), there isn't much information via a browser search.
-- 🪄 **Masto successful outcome**: **Masto found more information on the instance and on the admin, including email address.**
+|**Use case 2**    | **Searching without getting a 401 error**|
+| ---------------- |:----------------------------------------:|
 
+- Many people don't want an account on Mastodon, and if you don't have an account, you can search on Mastodon, but you will only get 5 results. 
+- Clicking on `load more` will give you a 401 error and request for the user to log in.
 
-## ❌ **Tool (unsuccessful) use cases**
+🪄 **Masto successful outcome**: **You can use Masto without logging in to Mastodon**, you won't get a 401 error.
 
-**Use case 1**: **Not finding an existing user**:
-- Tried searching user `sector035` via browser, Mastodon returned no result. So far this is normal because `@sector035` has settings to --> user opted to be on the profile directory = `False`
-- Tried searching with **Masto OSINT Tool**, no result either. The Mastodon API isn't 100% reliable. [See here for explanation](https://github.com/C3n7ral051nt4g3ncy/Masto#issues-with-not-finding-a-user)
-- ❌ Masto unsuccessful outcome: **Masto found no user**, even though the user exists.
-- 🔩 **Fix**: Working on a fix and a solution suggested by [@Webbreacher](https://github.com/WebBreacher)
+<br>
+<br>
+
+|**Use case 3**    | **Getting information on locked instances**:|
+| ---------------- |:-------------------------------------------:|
+
+- Tried searching for the instance [0sint.social](https://0sint.social/about), there isn't much information via a browser search because it's locked.
+
+🪄 **Masto successful outcome**: **Masto found more information on the instance and on the admin, including email address.**
+
+<br>
 
 ## 🐘 **Mastodon.social understanding**
 The **same username** can be found across different instances(servers):
-- example: @osint@mastodon.social | @osint@mstdn.social | @osint@counter.social
-- finding the same username on different instances does not prove it's the same person behind each account
-- This may cause impersonation issues in the future, although each instance can only have **one unique username** in the server, and ALL users should verify their accounts with the `<a rel="me"` attribute which helps others identifying a scammer/impersonator. 
+- example: ```@osint@mastodon.social``` | ```@osint@mstdn.social``` | ```@osint@counter.social```
+- Finding the same username on different instances does not prove it's the same person behind each account.
+- Each instance can only have **one unique username** in the server. Tip: verify your account with the `<a rel="me"` attribute which confirms you are behind the account, and will help avoid or detect impersonators.
 
-## 👥 **Testing on known users**
+<br>
 
-- For the 1st function, try: ```Gargron```, the founder of [Mastodon.social](https://mastodon.social), this pulls a wopping 11 accounts!!! (same username doesn't prove the 11 accounts belong to the Mastodon Developper).
-- For the 2nd function, searching only on [Mastodon.social](https://mastodon.social), try: ```osint```
-- For the 3rd function, searching only on [mstdn.social](https://mstdn.social), try: ```stux```
-- For the 4th function, searching for instances, try: ```social.network.europa.eu```
 
-## 🗒️ **Issues with not finding a user**
+## 👤 **Testing on known users and instances**
+
+- For a username test, try: ```python3 masto.py -u Gargron```, the founder of [Mastodon.social](https://mastodon.social), this pulls a wopping 11 accounts!!! (keep in mind that the same username doesn't prove the 11 accounts belong to @Gargron {Gargron is the Mastodon Dev}).
+- For an instance test, try: ```python3 masto.py -i social.network.europa.eu``` 
+
+<br>
+
+## :white_circle: **Mastodon API reliability issues**
 - You may know of a valid user & have the link to the user's profile, you input the username on Masto but get no result.
 - I asked the Mastodon Team about this api issue, they replied:
 > There is no global search, the server will reply with what it knows about. If it has not encountered the account, it will not return it in search results.
 
+- 🟢 **Masto v2.0 fixes this**, the scan of Masto's own instances comes in support of Mastodon's API and picks up on things the API missed.
+- **v2.0 is 100% reliable** if the server is listed in the Masto ```fediverse_instances.json``` file.
+- This fix is thanks to [@Webbreacher](https://github.com/WebBreacher) who suggested this feature.
+
+<br>
+
 ## 🙏 **Thanks**
-- Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas.
-I learn a great deal from him, and he is a great instructor & inspiring person.
+- Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas. I learn a great deal from him, and he is a great instructor & inspiring person.
 - Thanks to [@Roman-Kasianenko](https://github.com/Roman-Kasianenko) for his help.
 
-
+<br>
 
 ## 📝 **License**
 
