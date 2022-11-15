@@ -475,6 +475,16 @@
         "m_code" : 404,
         "known" : ["chm", "micha"],
         "valid" : true
+       },
+       {
+        "name" : "mastodon.top",
+        "uri_check" : "https://mastodon.top/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mastodon.top) - Mastodon.top</title",
+        "m_string" : "<title>La page que vous recherchez n’existe pas",
+        "m_code" : 404,
+        "known" : ["thomas_virtubox", "fresnay"],
+        "valid" : true
        }
     ]
   }
