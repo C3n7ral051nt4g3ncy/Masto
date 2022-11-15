@@ -15,6 +15,7 @@ import webbrowser
 import requests
 import argparse
 from w3lib.html import remove_tags
+from bs4 import BeautifulSoup
 
 
 # banner
@@ -65,22 +66,7 @@ def instance_search(instance):
     s_description = remove_tags(s_description)
     print("\033[0mdescription: ", s_description)
     det_descript = inst_data["description"]
-    invalid_tags = [
-        "<strong>",
-        "</strong>",
-        "<a href=",
-        "target=",
-        "</a>",
-        "<a>",
-        "_blank",
-        ">",
-        "<",
-        '"',
-        "br /",
-        "|",
-    ]
-    for invalid_tag in invalid_tags:
-        det_descript = det_descript.replace(invalid_tag, "")
+    det_descript = remove_tags(det_descript)
     print("detailed description: ", det_descript)
     e_mail = inst_data["email"]
     print("\ninstance email: \033[32m\033[1m", e_mail)
@@ -120,7 +106,6 @@ def username_search_api(username):
     url = f"https://mastodon.social/api/v2/search?q={username}"
     response = requests.request("GET", url)
     data = json.loads(response.text)
-
     for _ in tqdm(range(10)):
         time.sleep(0.03)
 
@@ -145,61 +130,47 @@ def username_search_api(username):
         pro_url = intelligence["url"]
         target_username = intelligence["username"]
         account = intelligence["acct"]
-        dispn = intelligence["display_name"]
+        display = intelligence["display_name"]
         creation_date = intelligence["created_at"]
         bot = intelligence["bot"]
-        dscvr = intelligence["discoverable"]
+        discov = intelligence["discoverable"]
         fwers = intelligence["followers_count"]
         fwing = intelligence["following_count"]
         posts = intelligence["statuses_count"]
-        lastm = intelligence["last_status_at"]
+        laststatus = intelligence["last_status_at"]
         group = intelligence["group"]
         note = intelligence["note"]
-        avt = intelligence["avatar"]
+        note = remove_tags(note)
+        avatar = intelligence["avatar"]
 
         print("user ID:\033[32m\033[1m", identity)
         print("\033[0mprofile url:", pro_url)
         print("account locked:", lock)
         print("username:", target_username)
         print("\033[0maccount:\033[32m\033[1m", account)
-        print("\033[0mdisplay Name:\033[32m\033[1m", dispn)
+        print("\033[0mdisplay Name:\033[32m\033[1m", display)
         print("\033[0mprofile creation date:", creation_date)
         print("user is a bot:", bot)
-        print("user opted to be listed on the profile directory:", dscvr)
+        print("user opted to be listed on the profile directory:", discov)
         print("followers:", fwers)
         print("following:", fwing)
         print("number of posts:", posts)
-        print("user last message date:", lastm)
+        print("user last message date:", laststatus)
         print("user is a group:", group)
-
-        bad_tags = [
-            "<p>",
-            "</p>",
-            "</a>",
-            "</span>",
-            "<span>",
-            "<a href",
-            '"',
-            "<",
-            ">",
-            "class=",
-            "rel=tag",
-            "=",
-            "relnofollow",
-            "noopener",
-            "noreferrer",
-            "target_blankspan",
-            "target_blank",
-            "span",
-            "invisible",
-            "\u003e\u003c/a\u003e.",
-            "\u003cbr",
-        ]
-        for bad_tag in bad_tags:
-            note = note.replace(bad_tag, "")
         print("user bio:", note)
-        print("user's avatar link:", avt)
 
+        fields = []
+        for field in intelligence.get("fields", []):
+            name = field.get("name")
+            soup = BeautifulSoup(field.get("value"), "html.parser")
+            a = soup.find("a")
+            fields.append(f'--> {name}: {a.get("href")}')
+
+        print(f"sites found :")
+        for field in fields:
+            print(f"\t {field}")
+
+        print("user's avatar link:", avatar)
         choice = input("\033[1mopen avatar in browser | [Y|N]: \033[0m")
         if choice in ["y", "Y", "YES", "yes"]:
             webbrowser.open(avt)
@@ -316,3 +287,4 @@ if __name__ == "__main__":
                 break
             else:
                 username = input("Type new username: ")
+                
