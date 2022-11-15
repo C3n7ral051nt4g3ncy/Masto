@@ -515,6 +515,16 @@
         "m_code" : 404,
         "known" : ["cyb_detective", "OpalKatz"],
         "valid" : true
+       },
+       {
+        "name" : "socialbund.de",
+        "uri_check" : "https://social.bund.de/@{account}",
+        "e_code" : 200,
+        "e_string" : "@social.bund.de) - social.bund.de</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["bfdi", "bmdv"],
+        "valid" : true
        }
     ]
   }
