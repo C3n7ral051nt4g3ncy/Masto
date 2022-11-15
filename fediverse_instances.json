@@ -535,6 +535,16 @@
         "m_code" : 404,
         "known" : ["xaphanpl", "nomadbynature"],
         "valid" : true
+       },
+       {
+        "name" : "mastodon.education",
+        "uri_check" : "https://mastodon.education/@{account}",
+        "e_code" : 200,
+        "e_string" : "mastodon.education) - Mastodon Education</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["redegelde", "imsabbah"],
+        "valid" : true
        }
     ]
   }
