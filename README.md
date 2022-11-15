@@ -168,7 +168,9 @@ The **same username** can be found across different instances(servers):
 
 <br>
 
-## 🙏 **Thanks**
+## 🙏 **Thanks**!
+
+- <img width="33" src="https://user-images.githubusercontent.com/104733166/201862738-8dc7fc56-9d13-425a-8eea-2db9f6819d67.jpeg"> A big thank you to [@EduardSchwarzkopf](https://github.com/EduardSchwarzkopf) for all his contributions to Masto
 - Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas. I learn a great deal from him, and he is a great instructor & inspiring person.
 - Thanks to [@Roman-Kasianenko](https://github.com/Roman-Kasianenko) for his help.
 
