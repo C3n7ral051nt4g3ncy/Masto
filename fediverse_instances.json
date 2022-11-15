@@ -485,6 +485,16 @@
         "m_code" : 404,
         "known" : ["thomas_virtubox", "fresnay"],
         "valid" : true
+       },
+       {
+        "name" : "glammr.us",
+        "uri_check" : "https://glammr.us/@{account}",
+        "e_code" : 200,
+        "e_string" : "@glammr.us) - glammr.us Mastodon</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["FashAshLilith", "joshuatj"],
+        "valid" : true
        }
     ]
   }
