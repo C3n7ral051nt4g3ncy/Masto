@@ -19,24 +19,34 @@ from w3lib.html import remove_tags
 
 class Masto:
     def __init__(self) -> None:
+        self.silent_mode = False
         self.__init_args()
+
+    def __print_output(self, output: str):
+        divider = "\033[32m-" * 77
+        print(divider)
+        print(output)
+        print(divider)
 
     def __arg_list(self) -> list:
         return [
             {
                 "flag": "u",
-                "attribute": "username",
+                "long_flag": "username",
                 "help": "\033[32m\033[1m\ntarget username search across hundreds of Mastodon instances\033[0m",
+                "action": "store",
             },
             {
                 "flag": "i",
-                "attribute": "instance",
+                "long_flag": "instance",
                 "help": "\033[32m\033[1m\ninstance (server)\033[0m",
+                "action": "store",
             },
             {
                 "flag": "s",
-                "attribute": "silent",
+                "long_flag": "silent_mode",
                 "help": "\033[32m\033[1m\nsilent mode, just print the results\033[0m",
+                "action": "store_true",
             },
         ]
 
@@ -53,15 +63,16 @@ class Masto:
         for arg in arg_list:
             parser.add_argument(
                 f"-{arg['flag']}",
-                f"--{arg['attribute']}",
+                f"--{arg['long_flag']}",
                 help=arg["help"],
+                action=arg["action"],
             )
 
         # args settings
         args = parser.parse_args()
 
         for arg in arg_list:
-            attr = arg["attribute"]
+            attr = arg["long_flag"]
             parse_arg = getattr(args, attr)
             setattr(self, attr, parse_arg)
 
@@ -100,13 +111,17 @@ class Masto:
             inst_data = json.loads(response.text)
         except Exception as e:
             inst_data = {}
-        for _ in tqdm(range(10)):
-            time.sleep(0.03)
+
+        if not self.silent_mode:
+            for _ in tqdm(range(10)):
+                time.sleep(0.03)
+
         if not inst_data:
             print(
                 f"\n\033[31mMastodon instance\033[1m [{self.instance}]\033[0m\033[31m NOT found!\033[0m"
             )
             return
+
         name = inst_data["uri"]
         print("\ninstance (server): ", name)
         title = inst_data["title"]
@@ -170,8 +185,9 @@ class Masto:
         response = requests.request("GET", url)
         data = json.loads(response.text)
 
-        for _ in tqdm(range(10)):
-            time.sleep(0.03)
+        if not self.silent_mode:
+            for _ in tqdm(range(10)):
+                time.sleep(0.03)
 
         if response.text == ('{"accounts":[],"statuses":[],"hashtags":[]}'):
             print(
@@ -186,9 +202,10 @@ class Masto:
         )
         for index, intelligence in enumerate(list(data), start=1):
 
-            print("\n\n══════════")
-            print(f"\033[32m\033[1mAccount: {index}\033[0m")
-            print("══════════\n")
+            if not self.silent_mode:
+                print("\n\n══════════")
+                print(f"\033[32m\033[1mAccount: {index}\033[0m")
+                print("══════════\n")
 
             identity = intelligence["id"]
             lock = intelligence["locked"]
@@ -250,22 +267,29 @@ class Masto:
             print("user bio:", note)
             print("user's avatar link:", avt)
 
-            choice = input("\033[1mopen avatar in browser | [Y|N]: \033[0m")
-            if choice in ["y", "Y", "YES", "yes"]:
-                webbrowser.open(avt)
-            if choice in ["n", "N", "NO", "no"]:
-                continue
+            if not self.silent_mode:
+
+                choice = input("\033[1mopen avatar in browser | [Y|N]: \033[0m")
+                if choice in ["y", "Y", "YES", "yes"]:
+                    webbrowser.open(avt)
+                if choice in ["n", "N", "NO", "no"]:
+                    continue
 
     # username search with the Masto OSINT Tool servers database
     def username_search(self):
-        print("\n")
-        print(
-            f"Preparing to scan for target -->\033[32m\033[1m {self.username}\033[0m on the \033[32m\033[1m"
-            f"Masto OSINT Tool servers database\033[0m\033[0m\n"
-        )
+
+        if not self.silent_mode:
+            print("\n")
+            print(
+                f"Preparing to scan for target -->\033[32m\033[1m {self.username}\033[0m on the \033[32m\033[1m"
+                f"Masto OSINT Tool servers database\033[0m\033[0m\n"
+            )
+
         time.sleep(6)
-        for _ in tqdm(range(10)):
-            time.sleep(0.03)
+        if not self.silent_mode:
+            for _ in tqdm(range(10)):
+                time.sleep(0.03)
+
         headers = {
             "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "accept-language": "en-US;q=0.9,en,q=0,8",
@@ -294,32 +318,36 @@ class Masto:
 
             if res.status_code == 200 and estring_pos:
                 is_any_site_matched = True
-                print("\033[32m-" * 77)
-                print(
-                    f"\033[32m[+] \033[1mTarget found\033[0m\033[32m ✓ on:\033[1m{site_name}\033[0m"
-                )
-                print(f"\033[32m[+] Profile URL:\033[1m{uri_check}\033[0m")
-                print("\033[32m\033[1m-\033[0m" * 77)
+
+                if not self.silent_mode:
+                    self.__print_output(
+                        f"""\033[32m[+] \033[1mTarget found\033[0m\033[32m ✓ on:\033[1m{site_name}\033[0m\n\033[32m[+] Profile URL:\033[1m{uri_check}\033[0m"""
+                    )
+                else:
+                    print(uri_check)
 
         if not is_any_site_matched:
-            print(
-                f"\n\033[1m\033[31mTarget username: [{self.username}] NOT found on the Masto OSINT Tool servers database!\033[0m"
-            )
+            if not self.silent_mode:
+                print(
+                    f"\n\033[1m\033[31mTarget username: [{self.username}] NOT found on the Masto OSINT Tool servers database!\033[0m"
+                )
         return is_any_site_matched
 
 
 # main
 if __name__ == "__main__":
 
-    Masto.intro()
-
     if len(sys.argv) == 1:
+        Masto.intro()
         print(
             "You did not pass an argument | For Help --> \033[32m\033[1mpython3 masto.py -h\033[0m"
         )
         sys.exit(1)
 
     masto = Masto()
+
+    if not masto.silent_mode:
+        Masto.intro()
 
     # Loop Instance Search
     if masto.instance:
