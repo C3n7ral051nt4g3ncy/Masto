@@ -208,7 +208,7 @@ def username_search_api(username):
             continue
 
 
-# username search with the Mzsto OSINT Tool servers database
+# username search with the Masto OSINT Tool servers database
 def username_search(username):
     print("\n")
     print(
@@ -248,7 +248,7 @@ def username_search(username):
             is_any_site_matched = True
             print("\033[32m-" * 77)
             print(
-                f"\033[32m[+] \033[1mTarget found\033[0m\033[32m ✓ on:\033[1m\033[40m{site_name}\033[0m"
+                f"\033[32m[+] \033[1mTarget found\033[0m\033[32m ✓ on:\033[1m{site_name}\033[0m"
             )
             print(f"\033[32m[+] Profile URL:\033[1m{uri_check}\033[0m")
             print("\033[32m\033[1m-\033[0m" * 77)

@@ -505,6 +505,16 @@
         "m_code" : 404,
         "known" : ["woozle", "StephanieZvan"],
         "valid" : true
+       },
+       {
+        "name" : "0sint.social",
+        "uri_check" : "https://0sint.social/@{account}",
+        "e_code" : 200,
+        "e_string" : "@0sint.social) - 0sint.social</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["cyb_detective", "OpalKatz"],
+        "valid" : true
        }
     ]
   }
