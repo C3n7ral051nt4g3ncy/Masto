@@ -43,7 +43,7 @@ def instance_search(instance):
         "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) "
         "Chrome/104.0.0.0 Safari/537.36",
     }
-    inst_url = f"https://{instance}/api/v1/instance.json"
+    inst_url = f"https://{instance}/api/v1/instance"
     try:
         response = requests.request("GET", inst_url, headers=headers)
         inst_data = json.loads(response.text)
@@ -56,6 +56,7 @@ def instance_search(instance):
             f"\n\033[31mMastodon instance\033[1m [{instance}]\033[0m\033[31m NOT found!\033[0m"
         )
         return
+
     name = inst_data["uri"]
     print("\ninstance (server): ", name)
     title = inst_data["title"]
