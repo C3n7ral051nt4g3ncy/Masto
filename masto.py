@@ -325,11 +325,10 @@ class Masto:
                 else:
                     print(uri_check)
 
-        if not is_any_site_matched:
-            if not self.silent_mode:
-                print(
-                    f"\n\033[1m\033[31mTarget username: [{self.username}] NOT found on the Masto OSINT Tool servers database!\033[0m"
-                )
+        if not is_any_site_matched and not self.silent_mode:
+            print(
+                f"\n\033[1m\033[31mTarget username: [{self.username}] NOT found on the Masto OSINT Tool servers database!\033[0m"
+            )
         return is_any_site_matched
 
 
