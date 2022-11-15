@@ -20,6 +20,51 @@ from w3lib.html import remove_tags
 class Masto:
     def __init__(self) -> None:
         self.__intro()
+        self.__init_args()
+
+    def __arg_list(self) -> list:
+        return [
+            {
+                "flag": "u",
+                "attribute": "username",
+                "help": "\033[32m\033[1m\ntarget username search across hundreds of Mastodon instances\033[0m",
+            },
+            {
+                "flag": "i",
+                "attribute": "instance",
+                "help": "\033[32m\033[1m\ninstance (server)\033[0m",
+            },
+            {
+                "flag": "s",
+                "attribute": "silent",
+                "help": "\033[32m\033[1m\nsilent mode, just print the results\033[0m",
+            },
+        ]
+
+    def __init_args(self):
+        parser = argparse.ArgumentParser(
+            description="Masto OSINT Tool help --> "
+            "\033[32m\033[1m[For username]\033[0m: input without @ symbol |"
+            "\033[32m\033[1m [For server]\033[0m: input without https in"
+            " front | example: \033[35m\033[1minfosec.exchange\033[0m"
+        )
+
+        arg_list = self.__arg_list()
+
+        for arg in arg_list:
+            parser.add_argument(
+                f"-{arg['flag']}",
+                f"--{arg['attribute']}",
+                help=arg["help"],
+            )
+
+        # args settings
+        args = parser.parse_args()
+
+        for arg in arg_list:
+            attr = arg["attribute"]
+            parse_arg = getattr(args, attr)
+            setattr(self, attr, parse_arg)
 
     def __intro(self):
 
@@ -264,36 +309,6 @@ class Masto:
 
 # main
 if __name__ == "__main__":
-
-    masto = Masto()
-    # argparse arguments
-    parser = argparse.ArgumentParser(
-        description="Masto OSINT Tool help --> "
-        "\033[32m\033[1m[For username]\033[0m: input without @ symbol |"
-        "\033[32m\033[1m [For server]\033[0m: input without https in"
-        " front | example: \033[35m\033[1minfosec.exchange\033[0m"
-    )
-
-    parser.add_argument(
-        "-u",
-        "--username",
-        help="\033[32m\033[1m\ntarget username search across hundreds of Mastodon instances\033[0m",
-    )
-
-    parser.add_argument(
-        "-i",
-        "--instance",
-        help="\033[32m\033[1m\ninstance (server)\033[0m",
-    )
-
-    parser.add_argument(
-        "-s",
-        "--silent",
-        help="\033[32m\033[1m\nsilent mode, just print the results\033[0m",
-    )
-
-    # args settings
-    args = parser.parse_args()
 
     if len(sys.argv) == 1:
         print(
