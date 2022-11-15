@@ -495,6 +495,16 @@
         "m_code" : 404,
         "known" : ["FashAshLilith", "joshuatj"],
         "valid" : true
+       },
+       {
+        "name" : "Toot.cat",
+        "uri_check" : "https://toot.cat/@{account}",
+        "e_code" : 200,
+        "e_string" : "@toot.cat) - Toot.Cat</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["woozle", "StephanieZvan"],
+        "valid" : true
        }
     ]
   }
