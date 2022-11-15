@@ -170,12 +170,11 @@ The **same username** can be found across different instances(servers):
 
 ## 🙏 **Thanks**!
 
-- <img width="33" src="https://user-images.githubusercontent.com/104733166/201862738-8dc7fc56-9d13-425a-8eea-2db9f6819d67.jpeg">  A big thank you to [@EduardSchwarzkopf](https://github.com/EduardSchwarzkopf) for all his contributions to **Masto OSINT Tool**.
-- <img width="33" src="https://user-images.githubusercontent.com/104733166/201863188-d7be5726-c26b-4f38-bcf0-6f14e0e8e7a4.jpeg">  Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas. I learn a great deal from him, and he is a great instructor & inspiring person.
-- <img width="33" src="https://user-images.githubusercontent.com/104733166/201863416-d5b222e2-278b-4ec4-a235-009099285fce.jpeg">  Thanks to [@Roman-Kasianenko](https://github.com/Roman-Kasianenko) for his help.
+<img width="33" src="https://user-images.githubusercontent.com/104733166/201990127-2b7b4f03-ba6a-43fa-a8ef-7ba164685ee2.png">  A big thank you to [@EduardSchwarzkopf](https://github.com/EduardSchwarzkopf) for all his contributions to **Masto OSINT Tool**.
 
+<img width="33" src="https://user-images.githubusercontent.com/104733166/201990241-3dfd2022-7eab-4c57-88e5-3567376b84fa.png">  Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas. I learn a great deal from him, and he is a great instructor & inspiring person.
 
-
+<img width="33" src="https://user-images.githubusercontent.com/104733166/201990360-337c1d05-031a-4210-ae34-80503bae1981.png">  Thanks to [@Roman-Kasianenko](https://github.com/Roman-Kasianenko) for his help.
 
 
 <br>
