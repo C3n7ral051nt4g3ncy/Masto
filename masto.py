@@ -28,6 +28,11 @@ class Masto:
         print(output)
         print(divider)
 
+    def __loading_bar(self):
+        if not self.silent_mode:
+            for _ in tqdm(range(10)):
+                time.sleep(0.03)
+
     def __arg_list(self) -> list:
         return [
             {
@@ -112,9 +117,7 @@ class Masto:
         except Exception as e:
             inst_data = {}
 
-        if not self.silent_mode:
-            for _ in tqdm(range(10)):
-                time.sleep(0.03)
+        self.__loading_bar()
 
         if not inst_data:
             print(
@@ -185,9 +188,7 @@ class Masto:
         response = requests.request("GET", url)
         data = json.loads(response.text)
 
-        if not self.silent_mode:
-            for _ in tqdm(range(10)):
-                time.sleep(0.03)
+        self.__loading_bar()
 
         if response.text == ('{"accounts":[],"statuses":[],"hashtags":[]}'):
             print(
@@ -286,9 +287,7 @@ class Masto:
             )
 
         time.sleep(6)
-        if not self.silent_mode:
-            for _ in tqdm(range(10)):
-                time.sleep(0.03)
+        self.__loading_bar()
 
         headers = {
             "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
