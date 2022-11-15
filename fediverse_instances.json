@@ -455,6 +455,16 @@
         "m_code" : 404,
         "known" : ["pauljbelcher", "adrechsel"],
         "valid" : true
+       },
+       {
+        "name" : "mastodonapp.uk",
+        "uri_check" : "https://mastodonapp.uk/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mastodonapp.uk) - Mastodon App UK</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["wild1145", "paulwarbo"],
+        "valid" : true
        }
     ]
   }
