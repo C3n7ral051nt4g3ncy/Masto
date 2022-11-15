@@ -445,6 +445,16 @@
         "m_code" : 404,
         "known" : ["guloguloguy", "RheaFlight"],
         "valid" : true
+       },
+       {
+        "name" : "eupolicy.social",
+        "uri_check" : "https://eupolicy.social/@{account}",
+        "e_code" : 200,
+        "e_string" : "@eupolicy.social) - EUpolicy.social - A Mastodon server for the EU bubble",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["pauljbelcher", "adrechsel"],
+        "valid" : true
        }
     ]
   }
