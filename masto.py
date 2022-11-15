@@ -353,6 +353,9 @@ if __name__ == "__main__":
         while True:
             instance_found = masto.instance_search()
 
+            if masto.silent_mode:
+                break
+
             yes_no = input("\nCheck another instance? [yes|no]: ")
             if yes_no.lower() == "no":
                 break
@@ -364,6 +367,9 @@ if __name__ == "__main__":
         while True:
             api_user_found = masto.username_search_api()
             user_found = masto.username_search()
+
+            if masto.silent_mode:
+                break
 
             yes_no = input("\nTry another username? [yes|no]: ")
             if yes_no.lower() == "no":
