@@ -86,7 +86,7 @@ class Masto:
         )
 
     # search mastodon instances (servers)
-    def instance_search(self, instance):
+    def instance_search(self):
         headers = {
             "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "accept-language": "en-US;q=0.9,en,q=0,8",
@@ -94,7 +94,7 @@ class Masto:
             "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) "
             "Chrome/104.0.0.0 Safari/537.36",
         }
-        inst_url = f"https://{instance}/api/v1/instance.json"
+        inst_url = f"https://{self.instance}/api/v1/instance.json"
         try:
             response = requests.request("GET", inst_url, headers=headers)
             inst_data = json.loads(response.text)
@@ -104,7 +104,7 @@ class Masto:
             time.sleep(0.03)
         if not inst_data:
             print(
-                f"\n\033[31mMastodon instance\033[1m [{instance}]\033[0m\033[31m NOT found!\033[0m"
+                f"\n\033[31mMastodon instance\033[1m [{self.instance}]\033[0m\033[31m NOT found!\033[0m"
             )
             return
         name = inst_data["uri"]
@@ -165,8 +165,8 @@ class Masto:
             print(f"{key}: {admin_data[key]}")
 
     # search username with Mastodon API
-    def username_search_api(self, username):
-        url = f"https://mastodon.social/api/v2/search?q={username}"
+    def username_search_api(self):
+        url = f"https://mastodon.social/api/v2/search?q={self.username}"
         response = requests.request("GET", url)
         data = json.loads(response.text)
 
@@ -175,13 +175,14 @@ class Masto:
 
         if response.text == ('{"accounts":[],"statuses":[],"hashtags":[]}'):
             print(
-                f"\n\033[1m\033[31mTarget username: [{username}] NOT found using the Mastodon API!\033[0m"
+                f"\n\033[1m\033[31mTarget username: [{self.username}] NOT found using the Mastodon API!\033[0m"
             )
             return
         time.sleep(1)
 
         data = filter(
-            lambda x: x.get("username").lower() == username.lower(), data["accounts"]
+            lambda x: x.get("username").lower() == self.username.lower(),
+            data["accounts"],
         )
         for index, intelligence in enumerate(list(data), start=1):
 
@@ -256,10 +257,10 @@ class Masto:
                 continue
 
     # username search with the Masto OSINT Tool servers database
-    def username_search(self, username):
+    def username_search(self):
         print("\n")
         print(
-            f"Preparing to scan for target -->\033[32m\033[1m {username}\033[0m on the \033[32m\033[1m"
+            f"Preparing to scan for target -->\033[32m\033[1m {self.username}\033[0m on the \033[32m\033[1m"
             f"Masto OSINT Tool servers database\033[0m\033[0m\n"
         )
         time.sleep(6)
@@ -281,7 +282,7 @@ class Masto:
         for site in sites:
             uri_check = site["uri_check"]
             site_name = site["name"]
-            uri_check = uri_check.format(account=username)
+            uri_check = uri_check.format(account=self.username)
 
             try:
                 res = requests.get(uri_check, headers=headers)
@@ -302,7 +303,7 @@ class Masto:
 
         if not is_any_site_matched:
             print(
-                f"\n\033[1m\033[31mTarget username: [{username}] NOT found on the Masto OSINT Tool servers database!\033[0m"
+                f"\n\033[1m\033[31mTarget username: [{self.username}] NOT found on the Masto OSINT Tool servers database!\033[0m"
             )
         return is_any_site_matched
 
@@ -316,28 +317,27 @@ if __name__ == "__main__":
         )
         sys.exit(1)
 
-    instance = args.instance
-    username = args.username
+    masto = Masto()
 
     # Loop Instance Search
-    if instance:
+    if masto.instance:
         while True:
-            instance_found = masto.instance_search(instance)
+            instance_found = masto.instance_search()
 
             yes_no = input("\nCheck another instance? [yes|no]: ")
             if yes_no.lower() == "no":
                 break
             else:
-                instance = input("type new instance: ")
+                setattr(masto, "instance", input("type new instance: "))
 
     # Loop target username search across all instances with API and Masto OSINT tool database
-    if username:
+    if masto.username:
         while True:
-            api_user_found = masto.username_search_api(username)
-            user_found = masto.username_search(username)
+            api_user_found = masto.username_search_api()
+            user_found = masto.username_search()
 
             yes_no = input("\nTry another username? [yes|no]: ")
             if yes_no.lower() == "no":
                 break
             else:
-                username = input("Type new username: ")
+                setattr(masto, "username", input("Type new username: "))
