@@ -19,7 +19,6 @@ from w3lib.html import remove_tags
 
 class Masto:
     def __init__(self) -> None:
-        self.__intro()
         self.__init_args()
 
     def __arg_list(self) -> list:
@@ -66,7 +65,8 @@ class Masto:
             parse_arg = getattr(args, attr)
             setattr(self, attr, parse_arg)
 
-    def __intro(self):
+    @staticmethod
+    def intro():
 
         # banner
         print(
@@ -310,6 +310,8 @@ class Masto:
 
 # main
 if __name__ == "__main__":
+
+    Masto.intro()
 
     if len(sys.argv) == 1:
         print(
