@@ -14,8 +14,6 @@ import sys
 import webbrowser
 import requests
 import argparse
-from bs4 import BeautifulSoup
-from pprint import pprint
 from w3lib.html import remove_tags
 
 
