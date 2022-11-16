@@ -545,6 +545,16 @@
         "m_code" : 404,
         "known" : ["redegelde", "imsabbah"],
         "valid" : true
+       },
+       {
+        "name" : "social.rebellion",
+        "uri_check" : "https://social.rebellion.global/@{account}",
+        "e_code" : 200,
+        "e_string" : "@social.rebellion.global) - Mastodon</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["xrfrance", "xrgrenoble"],
+        "valid" : true
        }
     ]
   }
