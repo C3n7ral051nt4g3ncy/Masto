@@ -555,6 +555,16 @@
         "m_code" : 404,
         "known" : ["xrfrance", "xrgrenoble"],
         "valid" : true
+       },
+       {
+        "name" : "hulvr",
+        "uri_check" : "https://hulvr.com/@{account}",
+        "e_code" : 200,
+        "e_string" : "@hulvr.com) - hulvr</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["hulver", "devtrash"],
+        "valid" : true
        }
     ]
   }
