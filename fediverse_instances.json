@@ -575,6 +575,16 @@
         "m_code" : 404,
         "known" : ["tomoki", "heatmetalx"],
         "valid" : true
+       },
+       {
+        "name" : "heislandmine",
+        "uri_check" : "https://heislandmine.work/@{account}",
+        "e_code" : 200,
+        "e_string" : "@heislandmine.work) - landodon</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["Heislandmine", "kani_senbei"],
+        "valid" : true
        }
     ]
   }
