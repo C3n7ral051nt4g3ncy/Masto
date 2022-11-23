@@ -420,7 +420,7 @@
         "name" : "counter.social",
         "uri_check" : "https://counter.social/@{account}",
         "e_code" : 200,
-        "e_string" : "@counter.social) - CounterSocial</title>",
+        "e_string" : "counter.social",
         "m_string" : "The page you are looking for isn&#39;t here.",
         "m_code" : 404,
         "known" : ["ericconrad", "webbreacher"],
@@ -594,6 +594,16 @@
         "m_string" : "<title>The page you are looking for isn&#39;t here.",
         "m_code" : 404,
         "known" : ["jeff", "panamared27401"],
+        "valid" : true
+       },
+       {
+        "name" : "alivebar",
+        "uri_check" : "https://alive.bar/@{account}",
+        "e_code" : 200,
+        "e_string" : "@alive.bar) - alive.bar</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["admin", "insuaal"],
         "valid" : true
        }
     ]
