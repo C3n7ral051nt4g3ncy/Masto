@@ -30,7 +30,7 @@
         "name" : "mstdn_social",
         "uri_check" : "https://mstdn.social/@{account}",
         "e_code" : 200,
-        "e_string" : "@mstdn.social) - Mastodon ",
+        "e_string" : "mstdn.social",
         "m_string" : "<title>The page you are looking for isn&#39;t here.",
         "m_code" : 404,
         "known" : ["stux", "MariNYC"],
