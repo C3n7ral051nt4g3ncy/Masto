@@ -565,6 +565,16 @@
         "m_code" : 404,
         "known" : ["hulver", "devtrash"],
         "valid" : true
+       },
+       {
+        "name" : "vocalodon.net",
+        "uri_check" : "https://vocalodon.net/@{account}",
+        "e_code" : 200,
+        "e_string" : "@vocalodon.net) - Vocalodon</title>",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["tomoki", "heatmetalx"],
+        "valid" : true
        }
     ]
   }
