@@ -27,13 +27,13 @@
         "valid" : true
        },
        {
-        "name" : "mstdn.social",
-        "uri_check" : "https://mstdn.io/@{account}",
+        "name" : "mstdn_social",
+        "uri_check" : "https://mstdn.social/@{account}",
         "e_code" : 200,
-        "e_string" : "@mstdn.social) - Mastodon",
-        "m_string" : "The page you are looking for isn&#39;t here.",
+        "e_string" : "@mstdn.social) - Mastodon ",
+        "m_string" : "<title>The page you are looking for isn&#39;t here.",
         "m_code" : 404,
-        "known" : ["mike", "greg"],
+        "known" : ["stux", "MariNYC"],
         "valid" : true
        },
        {
