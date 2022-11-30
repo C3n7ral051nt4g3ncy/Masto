@@ -78,7 +78,7 @@
        },
        {
         "name" : "mstdn.jp",
-        "uri_check" : "https://baraag.net/@{account}",
+        "uri_check" : "https://mstdn.jp/@{account}",
         "e_code" : 200,
         "e_string" : "@mstdn.jp) - mstdn.jp</title>",
         "m_string" : "<title>The page you are looking for isn&#39;t here.",
