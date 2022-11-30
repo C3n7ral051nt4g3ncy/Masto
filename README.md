@@ -138,7 +138,7 @@
 
 - Conducted a search with Masto for the username ```defcon```, the Mastodon API returned 2 user accounts.
 
-🪄 **Masto successful outcome**: **Masto OSINT Tool then picked up after the first API search with a full scan and found 4 accounts.**
+🪄 **Masto successful outcome**: **Masto OSINT Tool picked up after the initial API search by doing a full scan and found 4 accounts.**
 
 <br>
 
@@ -172,7 +172,7 @@ The **same username** can be found across different instances(servers):
 ## Community mentions about Masto
 
 - Featured in [Week in OSINT](https://sector035.nl/articles/2022-45) `#2022-45` by [@Sector035](https://github.com/Sector035)
-- Part of the [OSINT Stuff Tool Collection](https://cipher387.github.io/osint_stuff_tool_collection/) by [@cipher387](https://github.com/cipher387)
+- Featured in the [OSINT Stuff Tool Collection](https://cipher387.github.io/osint_stuff_tool_collection/) by [@cipher387](https://github.com/cipher387)
 - Mentionned on [D1 H4ck](https://www.facebook.com/techmaleficent)
 
 
