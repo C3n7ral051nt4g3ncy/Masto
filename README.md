@@ -171,9 +171,11 @@ The **same username** can be found across different instances(servers):
 
 ## 🙏 **Thanks**!
 
-<img width="33" src="https://user-images.githubusercontent.com/104733166/201990127-2b7b4f03-ba6a-43fa-a8ef-7ba164685ee2.png">  A big thank you to [@EduardSchwarzkopf](https://github.com/EduardSchwarzkopf) for all his contributions to **Masto OSINT Tool**.
+<img width="33" src="https://user-images.githubusercontent.com/104733166/201990127-2b7b4f03-ba6a-43fa-a8ef-7ba164685ee2.png"> Huge thanks to [@EduardSchwarzkopf](https://github.com/EduardSchwarzkopf) for all his contributions to **Masto OSINT Tool**.
 
 <img width="33" src="https://user-images.githubusercontent.com/104733166/201990241-3dfd2022-7eab-4c57-88e5-3567376b84fa.png">  Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas. I learn a great deal from him, and he is a great instructor & inspiring person.
+
+<img width="33" src="https://user-images.githubusercontent.com/104733166/204681183-8702ba59-3419-4f8d-a3a3-18f5b7b441a3.png"> Thanks to [sthierolf](https://github.com/sthierolf) for contributing
 
 <img width="33" src="https://user-images.githubusercontent.com/104733166/201990360-337c1d05-031a-4210-ae34-80503bae1981.png">  Thanks to [@Roman-Kasianenko](https://github.com/Roman-Kasianenko) for his help.
 
