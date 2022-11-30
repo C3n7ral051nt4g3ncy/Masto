@@ -131,6 +131,16 @@
 🪄 **Masto successful outcome**: **Masto found more information on the instance and on the admin, including email address.**
 
 <br>
+<br>
+
+|**Use case 4**    | **Conducted a username search for Defcon**:|
+| ---------------- |:-------------------------------------------:|
+
+- Conducted a search with Masto for the username ```defcon```, the Mastodon API returned 2 user accounts.
+
+🪄 **Masto successful outcome**: **Masto OSINT Tool then picked up after the first API search with a full scan and found 4 accounts.**
+
+<br>
 
 ## 🐘 **Mastodon.social understanding**
 The **same username** can be found across different instances(servers):
