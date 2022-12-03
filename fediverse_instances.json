@@ -615,6 +615,16 @@
         "m_code" : 404,
         "known" : ["ogopogo", "jona"],
         "valid" : true
+       },
+       {
+        "name" : "hackerstown",
+        "uri_check" : "https://hackers.town/@{account}",
+        "e_code" : 200,
+        "e_string" : "town</title>",
+        "m_string" : "The page you are looking for isn&#39;t",
+        "m_code" : 404,
+        "known" : ["thegibson", "remotenemesis"],
+        "valid" : true
        }
     ]
   }

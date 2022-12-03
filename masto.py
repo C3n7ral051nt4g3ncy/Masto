@@ -162,13 +162,22 @@ def username_search_api(username):
         fields = []
         for field in intelligence.get("fields", []):
             name = field.get("name")
-            soup = BeautifulSoup(field.get("value"), "html.parser")
-            a = soup.find("a")
-            fields.append(f'--> {name}: {a.get("href")}')
+            value = field.get("value")
 
-        print(f"sites found :")
-        for field in fields:
-            print(f"\t {field}")
+            if value and '</' not in value:
+                continue                                                 
+
+            soup = BeautifulSoup(value, "html.parser")
+            a = soup.find("a")
+            if a:
+                fields.append(f'--> {name}: {a.get("href")}')
+                print(f"sites found :")
+            else:
+                continue
+
+            for field in fields:
+                print(f"\t {field}")
+
 
         print("user's avatar link:", avatar)
         choice = input("\033[1mopen avatar in browser | [Y|N]: \033[0m")
