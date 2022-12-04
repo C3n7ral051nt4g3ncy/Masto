@@ -625,6 +625,16 @@
         "m_code" : 404,
         "known" : ["thegibson", "remotenemesis"],
         "valid" : true
+       },
+       {
+        "name" : "CybreSpace",
+        "uri_check" : "https://cybre.space/@{account}",
+        "e_code" : 200,
+        "e_string" : "cybre.space) - Cybrespace</title>",
+        "m_string" : "The page you were looking for doesn&#39;t",
+        "m_code" : 404,
+        "known" : ["TheGibson", "Wintermute"],
+        "valid" : true
        }
     ]
   }
