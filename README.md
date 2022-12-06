@@ -9,9 +9,9 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
  <img width="77" src="https://user-images.githubusercontent.com/104733166/201745432-e10240ca-a742-40d8-98e4-1b83a011d159.png">
 [![security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
-[![MIT License](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/C3n7ral051nt4g3ncy/Masto/blob/master/LICENSE) 
+[![MIT License](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/C3n7ral051nt4g3ncy/Masto/blob/master/LICENSE)
 <img src="https://img.shields.io/github/v/tag/C3n7ral051nt4g3ncy/Masto?color=bright%20green&label=Version&logo=github">
-[![HitCount](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto.svg)](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto) 
+[![HitCount](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto.svg)](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto)
 <img src="https://img.shields.io/github/stars/C3n7ral051nt4g3ncy/Masto?color=bright%20green&logo=github">
 <img src="https://img.shields.io/github/forks/C3n7ral051nt4g3ncy/Masto?color=bright%20green&logoColor=white&logo=github">
 <img src="https://img.shields.io/github/last-commit/C3n7ral051nt4g3ncy/MAsto?color=bright%20green&label=Last%20commit">
@@ -22,7 +22,7 @@
 
 ## 🐘 **About Masto**
 
-**Masto provides information/intelligence on [Mastodon.social](https://mastodon.social) users and fediverse instances (servers).** 
+**Masto provides information/intelligence on [Mastodon.social](https://mastodon.social) users and fediverse instances (servers).**
 
 <br>
 
@@ -32,7 +32,7 @@
 - Find exact username match across instances (the tool currently pulls many accounts with the username **```OSINT```**, whereas the mastodon.social (browser search bar) returns one result, as well as returning unreliable results, such as accounts that only start with ```osint```
 - Find all accounts belonging to a user without logging in to Mastodon (**Mastodon requires users to log in and after 5 results you get**: ```401 Search queries pagination is not supported without authentication```
 - Find username correlation (can't be found by browser)
-- Check if the user is a bot 
+- Check if the user is a bot
 - Check if the account is a group
 - Check if the account is locked
 - Check if the user opted to be listed on the profile directory
@@ -40,7 +40,7 @@
 - Get profile creation date
 - Get number of followers & following
 - Get number of posts
-- Get user last status date 
+- Get user last status date
 - Get user's bio
 
 ### **Additional instance (server) feature**
@@ -49,10 +49,10 @@
 **This function helps to**:
 - Get information on an instance
 - Get instance Admin ID
-- Get instance email 
+- Get instance email
 - Get a short description
 - Get server thumbnail link
-- Get instance creation date 
+- Get instance creation date
 - Get instance language used
 - Get instance admin count of followers and following
 - Get instance admin last status date
@@ -62,7 +62,7 @@
 - Get admin avatar
 - Check if instance admin account is locked
 - Check if registration is required and if the admin needs to approve the request
-- Check if the admin is a bot 
+- Check if the admin is a bot
 
 <br>
 
@@ -80,6 +80,7 @@
 
 ```git clone https://github.com/C3n7ral051nt4g3ncy/Masto```
 <br>
+```cd Masto```
 <br>
 ```pip3 install -r requirements.txt```
 
@@ -101,11 +102,11 @@
 ## ⭐ **Tool use cases**
 
 | **Use case 1**    | **Searching for a user and bypassing the profile directory opt-out**|
-| ----------------  |:------------------------------------------------------------------:| 
+| ----------------  |:------------------------------------------------------------------:|
 
-- Tried searching via browser both terms `Webbreacher` and `@Webbreacher` **1 result** --> `@Webbreacher@mastodon.social`            
+- Tried searching via browser both terms `Webbreacher` and `@Webbreacher` **1 result** --> `@Webbreacher@mastodon.social`
 - Searched `Webbreacher` on **Masto**: **3 results** --> ✅ 3 accounts found
-- On the `counter.social` profile, `@Webbreacher's` settings are --> user opted to be on the profile directory = `False`, this is why the browser search didn't find the counter.social profile! 
+- On the `counter.social` profile, `@Webbreacher's` settings are --> user opted to be on the profile directory = `False`, this is why the browser search didn't find the counter.social profile!
 
 🪄 **Masto successful outcome**: **Masto found all 3 accounts**.
 
@@ -115,7 +116,7 @@
 |**Use case 2**    | **Searching without getting a 401 error**|
 | ---------------- |:----------------------------------------:|
 
-- Many people don't want an account on Mastodon, and if you don't have an account, you can search on Mastodon, but you will only get 5 results. 
+- Many people don't want an account on Mastodon, and if you don't have an account, you can search on Mastodon, but you will only get 5 results.
 - Clicking on `load more` will give you a 401 error and request for the user to log in.
 
 🪄 **Masto successful outcome**: **You can use Masto without logging in to Mastodon**, you won't get a 401 error.
@@ -154,7 +155,7 @@ The **same username** can be found across different instances(servers):
 ## 👤 **Testing on known users and instances**
 
 - For a username test, try: ```python3 masto.py -u Gargron```, the founder of [Mastodon.social](https://mastodon.social), this pulls a wopping 11 accounts!!! (keep in mind that the same username doesn't prove the 11 accounts belong to @Gargron {Gargron is the Mastodon Dev}).
-- For an instance test, try: ```python3 masto.py -i social.network.europa.eu``` 
+- For an instance test, try: ```python3 masto.py -i social.network.europa.eu```
 
 <br>
 
