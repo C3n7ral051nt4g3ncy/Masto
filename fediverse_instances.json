@@ -645,6 +645,16 @@
         "m_code" : 404,
         "known" : ["SDF", "quoll"],
         "valid" : true
+       },
+       {
+        "name" : "Toot.Community",
+        "uri_check" : "https://toot.community/@{account}",
+        "e_code" : 200,
+        "e_string" : "@toot.community) - toot.community</title>",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["jorijn", "Johnny"],
+        "valid" : true
        }
     ]
   }
