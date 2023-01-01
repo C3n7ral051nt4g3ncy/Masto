@@ -173,7 +173,9 @@ The **same username** can be found across different instances(servers):
 ## Community mentions about Masto
 
 - Featured in [Week in OSINT](https://sector035.nl/articles/2022-45) `#2022-45` by [@Sector035](https://github.com/Sector035)
-- Featured in the [OSINT Stuff Tool Collection](https://cipher387.github.io/osint_stuff_tool_collection/) by [@cipher387](https://github.com/cipher387)
+- Featured in the [OSINT Stuff Tool Collection](https://cipher387.github.io/osint_stuff_tool_collection/) by [@cipher387](https://github.com/cipher387)![JU2le-Ma_400x400]
+
+- Mentionned by [@DailyOsint](https://twitter.com/DailyOsint/status/1604827757426475008?s=20&t=W0v5uwWLaXgtQ1Ncn3G0Qg) <img width="33" src="https://user-images.githubusercontent.com/104733166/210180596-6f3efce3-6966-4759-91fa-f31020383bcd.png">
 - Mentionned on [D1 H4ck](https://www.facebook.com/techmaleficent)
 - Mentionned by [@Treadstone71](https://twitter.com/Treadstone71LLC)
 
