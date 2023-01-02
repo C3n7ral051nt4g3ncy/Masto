@@ -655,6 +655,16 @@
         "m_code" : 404,
         "known" : ["jorijn", "Johnny"],
         "valid" : true
+       },
+       {
+        "name" : "masto.nu",
+        "uri_check" : "https://masto.nu/@{account}",
+        "e_code" : 200,
+        "e_string" : "@masto.nu) - masto.nu</title>",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["mkevenaar", "monicawchin"],
+        "valid" : true
        }
     ]
   }
