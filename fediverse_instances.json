@@ -675,6 +675,16 @@
         "m_code" : 404,
         "known" : ["mb", "martin_english"],
         "valid" : true
-       }
+       },
+       {
+        "name" : "mstdn.plus",
+        "uri_check" : "https://mstdn.plus/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mstdn.plus) - MSTDN+</title>",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["JenTaylor", "MikeF"],
+        "valid" : true
+        }
     ]
   }
