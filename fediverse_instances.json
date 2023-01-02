@@ -665,6 +665,16 @@
         "m_code" : 404,
         "known" : ["mkevenaar", "monicawchin"],
         "valid" : true
+       },
+       {
+        "name" : "mastodon.au",
+        "uri_check" : "https://mastodon.au/@{account}",
+        "e_code" : 200,
+        "e_string" : "@mastodon.au) - Mastodon Australia</title>",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["mb", "martin_english"],
+        "valid" : true
        }
     ]
   }
