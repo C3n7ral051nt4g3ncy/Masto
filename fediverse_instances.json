@@ -695,6 +695,16 @@
         "m_code" : 404,
         "known" : ["TobyMayra", "harupom"],
         "valid" : true
+       },
+       {
+        "name" : "universeodon",
+        "uri_check" : "https://universeodon.com/@{account}",
+        "e_code" : 200,
+        "e_string" : "@universeodon.com) - Universeodon</title>",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["supernovae", "Bronson"],
+        "valid" : true
        }
     ]
   }
