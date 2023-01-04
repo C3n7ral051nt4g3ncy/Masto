@@ -705,6 +705,16 @@
         "m_code" : 404,
         "known" : ["supernovae", "Bronson"],
         "valid" : true
+       },
+       {
+        "name" : "techhub.social",
+        "uri_check" : "https://techhub.social/@{account}",
+        "e_code" : 200,
+        "e_string" : "@techhub.social) - TechHub</title>",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["nicdex", "peteohanlon"],
+        "valid" : true
        }
     ]
   }
