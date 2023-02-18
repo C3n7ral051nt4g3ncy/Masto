@@ -725,6 +725,16 @@
         "m_code" : 404,
         "known" : ["paula", "ahmed76farag"],
         "valid" : true
+       },
+       {
+        "name" : "masto.ai",
+        "uri_check" : "https://masto.ai/@{account}",
+        "e_code" : 200,
+        "e_string" : "@masto.ai) - Mastodon</title>",
+        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_code" : 404,
+        "known" : ["rbreich", "stux"],
+        "valid" : true
        }
     ]
   }
