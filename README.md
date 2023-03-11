@@ -185,6 +185,8 @@ The **same username** can be found across different instances(servers):
 
 - <img width="33" src="https://user-images.githubusercontent.com/104733166/212393361-84eb5aef-4565-4d87-9417-4ceee927c5c1.png"> Mentionned in this [Secjuice investigation](https://www.secjuice.com/mastodon-child-porn-pedophiles)  
 
+- <img width="33" src="https://user-images.githubusercontent.com/104733166/224481685-a49857be-090e-4e36-99e7-ede1937fdd00.png"> Mentionned in [MAG'OSINT March 2023 Issue](https://www.aege.fr/global/gene/link.php?news_link=2023113354_mag-osint-13-aege.pdf&fg=1)  
+
 
 
 <br>
