@@ -745,6 +745,16 @@
         "m_code" : 404,
         "known" : ["tass", "rt_russian"],
         "valid" : true
+       },
+       {
+        "name" : "muenchen.social",
+        "uri_check" : "https://muenchen.social/@{account}",
+        "e_code" : 200,
+        "e_string" : "muenchen.social - Die erste Mastodon Instanz für München</title>",
+        "m_string" : "<title>Die Seite, nach der du gesucht hast, wurde nicht gefunden",
+        "m_code" : 404,
+        "known" : ["joerg_spengler", "zeitbot"],
+        "valid" : true
        }
     ]
   }
