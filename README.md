@@ -23,7 +23,8 @@
 ## 🐘 **About Masto**
 
 **Masto provides information/intelligence on [Mastodon.social](https://mastodon.social) users and fediverse instances (servers).** <br>
-Masto OSINT Tool has been added as a Python package on PyPI --> https://pypi.org/project/masto/
+Masto OSINT Tool has been added as a Python package on PyPI --> https://pypi.org/project/masto/ 
+- Latest version --> https://pypi.org/project/masto/2.0.3/)
 
 <br>
 
