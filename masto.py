@@ -180,11 +180,6 @@ def username_search_api(username):
 
 
         print("user's avatar link:", avatar)
-        choice = input("\033[1mopen avatar in browser | [Y|N]: \033[0m")
-        if choice in ["y", "Y", "YES", "yes"]:
-            webbrowser.open(avt)
-        if choice in ["n", "N", "NO", "no"]:
-            continue
 
 
 # username search with the Masto OSINT Tool servers database
