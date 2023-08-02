@@ -99,7 +99,7 @@ https://pypi.org/project/masto/
 
 ## 👨‍💻 **Usage**
 
-If used PyPI:
+### If used PyPI:
 - Help:
 ```masto -h``` 
 
@@ -109,9 +109,9 @@ If used PyPI:
 - Search for instance
 ```masto -instance {instance_name}```
 
-<br<
+<br>
 
-If used GitHub and cloned the repository:
+### If used GitHub and cloned the repository:
 - Help:
 ```python3 masto.py -h```
 
