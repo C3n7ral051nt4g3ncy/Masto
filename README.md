@@ -83,7 +83,7 @@ Masto OSINT Tool has been added as a Python package on PyPI --> https://pypi.org
 
 https://pypi.org/project/masto/
 
-```pip install masto```
+```pip install masto==2.0.3```
 
 <br>
 
