@@ -22,7 +22,8 @@
 
 ## 🐘 **About Masto**
 
-**Masto provides information/intelligence on [Mastodon.social](https://mastodon.social) users and fediverse instances (servers).**
+**Masto provides information/intelligence on [Mastodon.social](https://mastodon.social) users and fediverse instances (servers).** <br>
+Masto OSINT Tool has been added as a Python package on PyPI --> https://pypi.org/project/masto/
 
 <br>
 
@@ -78,6 +79,16 @@
 
 ## 🛠️ **Installation**
 
+### Using PyPI
+
+https://pypi.org/project/masto/
+
+```pip install masto```
+
+<br>
+
+### Using GitHub
+
 ```git clone https://github.com/C3n7ral051nt4g3ncy/Masto```
 <br>
 ```cd Masto```
@@ -88,6 +99,19 @@
 
 ## 👨‍💻 **Usage**
 
+If used PyPI:
+- Help:
+```masto -h``` 
+
+- Search for user
+```masto -user {username}```
+
+- Search for instance
+```masto -instance {instance_name}```
+
+<br<
+
+If used GitHub and cloned the repository:
 - Help:
 ```python3 masto.py -h```
 
