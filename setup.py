@@ -8,7 +8,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="masto",
-    version="2.0.4",  
+    version="2.0.5",  
     author="OSINT_Tactical (AKA C3n7ral051nt4g3ncy)",
     author_email="C3n7ral051nt4g3ncy@tactical-osint-academy.com",
     description="Masto OSINT Tool Python package for Mastodon social OSINT investigations.",
@@ -30,7 +30,7 @@ setup(
     python_requires='>=3.6',
     entry_points={
         'console_scripts': [
-            'masto=Masto.masto:main',  
+            'masto=masto.masto:main',  
         ],
     },
 )
