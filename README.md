@@ -16,7 +16,7 @@
 <img src="https://img.shields.io/github/forks/C3n7ral051nt4g3ncy/Masto?color=bright%20green&logoColor=white&logo=github">
 <img src="https://img.shields.io/github/last-commit/C3n7ral051nt4g3ncy/MAsto?color=bright%20green&label=Last%20commit">
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
-[![PyPI version](https://badge.fury.io/py/masto.svg)](https://badge.fury.io/py/masto)
+<a href="https://badge.fury.io/py/masto"><img src="https://badge.fury.io/py/masto.svg" alt="PyPI version" height="18"></a>
 </div>
 
 <br>
