@@ -92,11 +92,11 @@ https://pypi.org/project/masto/
 
 ### Using GitHub
 
-```git clone https://github.com/C3n7ral051nt4g3ncy/Masto```
-<br>
-```cd Masto```
-<br>
-```pip3 install -r requirements.txt```
+```bash
+git clone https://github.com/C3n7ral051nt4g3ncy/Masto.git
+cd masto
+python3 setup.py install
+```
 
 <br>
 
