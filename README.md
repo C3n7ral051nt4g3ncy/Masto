@@ -102,7 +102,7 @@ python3 setup.py install
 
 ## 👨‍💻 **Usage**
 
-### If used PyPI:
+
 - Help:
 ```masto -h``` 
 
@@ -111,18 +111,6 @@ python3 setup.py install
 
 - Search for instance
 ```masto -instance {instance_name}```
-
-<br>
-
-### If used GitHub and cloned the repository:
-- Help:
-```python3 masto.py -h```
-
-- Searching for a user
-```python3 masto.py -u {username}```
-
-- Searching for an instance
-```python3 masto.py -i {instance}```
 
 <br>
 
