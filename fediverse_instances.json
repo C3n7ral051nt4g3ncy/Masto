@@ -410,8 +410,8 @@
         "name" : "counter.social",
         "uri_check" : "https://counter.social/@{account}",
         "e_code" : 200,
-        "e_string" : "counter.social",
-        "m_string" : "The page you are looking for isn&#39;t here.",
+        "e_string" : "counter.social) - CounterSocial</title>",
+        "m_string" : "Private Profile</title>",
         "m_code" : 404,
         "known" : ["ericconrad", "webbreacher"],
         "valid" : true
