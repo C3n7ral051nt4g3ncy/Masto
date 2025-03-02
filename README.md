@@ -4,6 +4,11 @@
 
 <br>
 
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/C3n7ral051nt4g3ncy/Masto.svg?variant=adaptive)](https://starchart.cc/C3n7ral051nt4g3ncy/Masto)
+
+<br>
+
 <div align="center">
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
