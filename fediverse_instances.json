@@ -927,11 +927,11 @@
         "valid" : true
        },
        {
-        "name" : "mastodon.bida.im",
+        "name" : "mastodon.bida",
         "uri_check" : "https://mastodon.bida.im/@{account}",
         "e_code" : 200,
-        "e_string" : "Mastodon Bida.im</title>",
-        "m_string" : "The page you are looking for isn&#39;t here",
+        "e_string" : "Bida.im</title>",
+        "m_string" : "The page you are looking for isn&#39;t",
         "m_code" : 404,
         "known" : ["zabow", "admin"],
         "valid" : true
