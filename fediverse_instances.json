@@ -777,7 +777,7 @@
         "valid" : true
        },
        {
-        "name" : "https://pixelfed.social",
+        "name" : "pixelfed.social",
         "uri_check" : "https://pixelfed.social/{account}",
         "e_code" : 200,
         "e_string" : "@pixelfed.social) - Pixelfed</title>",
@@ -787,81 +787,71 @@
         "valid" : true
        },
        {
-        "name" : "https://techhub.social",
-        "uri_check" : "https://techhub.social/@{account}",
-        "e_code" : 200,
-        "e_string" : "@techhub.social) - TechHub</title>",
-        "m_string" : "The page you are looking for isn&#39;t here.",
-        "m_code" : 404,
-        "known" : ["nicdex", "alextecplayz"],
-        "valid" : true
-       },
-       {
-        "name" : "https://mstdn.party",
+        "name" : "mstdn.party",
         "uri_check" : "https://mstdn.party/@{account}",
         "e_code" : 200,
         "e_string" : "@mstdn.party) - Mastodon Party</title>",
-        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_string" : "The page you are looking for isn&#39;t here",
         "m_code" : 404,
         "known" : ["staff", "dancoghlan"],
         "valid" : true
        },
        {
-        "name" : "https://girlcock.club",
+        "name" : "girlcock.club",
         "uri_check" : "https://girlcock.club/@{account}",
         "e_code" : 200,
         "e_string" : "@girlcock.club) - Girlcock.club</title>",
-        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_string" : "The page you are looking for isn&#39;t here",
         "m_code" : 404,
         "known" : ["Elizabeth", "luccaflower"],
         "valid" : true
        },
        {
-        "name" : "https://burma.social",
+        "name" : "burma.social",
         "uri_check" : "https://burma.social/@{account}",
         "e_code" : 200,
         "e_string" : "social) - Burma Social</title>",
-        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_string" : "The page you are looking for isn&#39;t here",
         "m_code" : 404,
         "known" : ["thumyae", "hikaru77"],
         "valid" : true
        },
        {
-        "name" : "https://rubber.social",
+        "name" : "rubber.social",
         "uri_check" : "https://rubber.social/@{account}",
         "e_code" : 200,
         "e_string" : "@rubber.social) - Shiny Mastodon</title>",
-        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_string" : "The page you are looking for isn&#39;t here",
         "m_code" : 404,
         "known" : ["johnnygear", "redheadgay93"],
         "valid" : true
        },
        {
-        "name" : "https://ohai.social",
+        "name" : "ohai.social",
         "uri_check" : "https://ohai.social/@{account}",
         "e_code" : 200,
         "e_string" : "@ohai.social) - ohai.social</title>",
-        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_string" : "The page you are looking for isn&#39;t here",
         "m_code" : 404,
         "known" : ["resuna", "sonjdol"],
         "valid" : true
        },
        {
-        "name" : "https://sfba.social",
+        "name" : "sfba.social",
         "uri_check" : "https://sfba.social/@{account}",
         "e_code" : 200,
         "e_string" : "@sfba.social) - SFBA.social</title>",
-        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_string" : "The page you are looking for isn&#39;t here",
         "m_code" : 404,
         "known" : ["seb", "LincolnMitchell"],
         "valid" : true
        },
        {
-        "name" : "https://qoto.org",
+        "name" : "qoto.org",
         "uri_check" : "https://qoto.org/@{account}",
         "e_code" : 200,
         "e_string" : "@qoto.org) - Qoto Mastodon</title>",
-        "m_string" : "The page you are looking for isn&#39;t here.",
+        "m_string" : "The page you are looking for isn&#39;t here",
         "m_code" : 404,
         "known" : ["olukawy", "Paulos_the_fog"],
         "valid" : true
