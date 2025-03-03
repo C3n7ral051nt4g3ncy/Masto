@@ -915,6 +915,16 @@
         "m_code" : 404,
         "known" : ["Queenero89", "euitter"],
         "valid" : true
+       },
+       {
+        "name" : "mstdn.ca",
+        "uri_check" : "https://mstdn.ca/@{account}",
+        "e_code" : 200,
+        "e_string" : "mstdn.ca) - Mastodon Canada",
+        "m_string" : "The page you are looking for isn&#39;t here",
+        "m_code" : 404,
+        "known" : ["Pinchy63", "Rasta"],
+        "valid" : true
        }
     ]
   }
