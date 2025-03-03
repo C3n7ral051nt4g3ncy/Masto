@@ -229,3 +229,9 @@ The **same username** can be found across different instances(servers):
 *Tool made for the OSINT and Cyber community, feel free to contribute  **```code```** .*
 
 <img width="66" src="https://user-images.githubusercontent.com/104733166/200310377-be6d8187-8366-4968-b730-a5c215b310ec.png">
+
+---
+
+## **Maltego Transform**
+
+A Maltego transform was made at the beggining of March 2025, and you can find the instructions here: https://github.com/C3n7ral051nt4g3ncy/Masto_Maltego_Transform
