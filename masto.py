@@ -16,6 +16,8 @@ import requests
 import argparse
 from w3lib.html import remove_tags
 from bs4 import BeautifulSoup
+import asyncio
+import aiohttp
 
 
 # banner
@@ -36,7 +38,7 @@ print(
 )
 
 # search mastodon instances (servers)
-def instance_search(instance):
+async def instance_search(instance, session):
     headers = {
         "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "accept-language": "en-US;q=0.9,en,q=0,8",
@@ -46,12 +48,11 @@ def instance_search(instance):
     }
     inst_url = f"https://{instance}/api/v1/instance"
     try:
-        response = requests.request("GET", inst_url, headers=headers)
-        inst_data = json.loads(response.text)
+        async with session.get(inst_url, headers=headers, timeout=10) as response:
+            inst_data = await response.json()
     except Exception as e:
         inst_data = {}
-    for _ in tqdm(range(10)):
-        time.sleep(0.03)
+
     if not inst_data:
         print(
             f"\n\033[31mMastodon instance\033[1m [{instance}]\033[0m\033[31m NOT found!\033[0m"
@@ -102,19 +103,17 @@ def instance_search(instance):
 
 
 # search username with Mastodon API
-def username_search_api(username):
+async def username_search_api(username, session):
     url = f"https://mastodon.social/api/v2/search?q={username}"
-    response = requests.request("GET", url)
-    data = json.loads(response.text)
-    for _ in tqdm(range(10)):
-        time.sleep(0.03)
+    async with session.get(url, timeout=10) as response:
+        data = await response.json()
+        text = await response.text()
 
-    if response.text == ('{"accounts":[],"statuses":[],"hashtags":[]}'):
+    if text == ('{"accounts":[],"statuses":[],"hashtags":[]}'):
         print(
             f"\n\033[1m\033[31mTarget username: [{username}] NOT found using the Mastodon API!\033[0m"
         )
         return
-    time.sleep(1)
 
     data = filter(
         lambda x: x.get("username").lower() == username.lower(), data["accounts"]
@@ -180,18 +179,13 @@ def username_search_api(username):
 
 
         print("user's avatar link:", avatar)
+        print(
+            f"\nPreparing to scan for target -->\033[32m\033[1m {username}\033[0m on the \033[32m\033[1m"
+            f"Masto OSINT Tool servers database\033[0m\033[0m\n"
+        )
 
 
-# username search with the Masto OSINT Tool servers database
-def username_search(username):
-    print("\n")
-    print(
-        f"Preparing to scan for target -->\033[32m\033[1m {username}\033[0m on the \033[32m\033[1m"
-        f"Masto OSINT Tool servers database\033[0m\033[0m\n"
-    )
-    time.sleep(6)
-    for _ in tqdm(range(10)):
-        time.sleep(0.03)
+async def username_search(username, session):
     headers = {
         "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "accept-language": "en-US;q=0.9,en,q=0,8",
@@ -200,33 +194,35 @@ def username_search(username):
         "Chrome/104.0.0.0 Safari/537.36",
     }
 
-    response = requests.get(
-        "https://raw.githubusercontent.com/C3n7ral051nt4g3ncy/Masto/master/fediverse_instances.json"
-    )
-    sites = response.json()["sites"]
-    is_any_site_matched = False
-    for site in sites:
-        uri_check = site["uri_check"]
-        site_name = site["name"]
-        uri_check = uri_check.format(account=username)
+    async with session.get(
+        "https://raw.githubusercontent.com/C3n7ral051nt4g3ncy/Masto/master/fediverse_instances.json",
+        timeout=10
+    ) as response:
+        text = await response.text()
+        sites = json.loads(text)["sites"]
 
+    # Create tasks for all site checks
+    async def check_site(site):
+        uri_check = site["uri_check"].format(account=username)
         try:
-            res = requests.get(uri_check, headers=headers)
+            async with session.get(uri_check, headers=headers) as res:
+                text = await res.text()
+                if res.status == 200 and text.find(site["e_string"]) > 0:
+                    print("\033[32m-" * 77)
+                    print(
+                        f"\033[32m[+] \033[1mTarget found\033[0m\033[32m ✓ on:\033[1m{site['name']}\033[0m"
+                    )
+                    print(f"\033[32m[+] Profile URL:\033[1m{uri_check}\033[0m")
+                    print("\033[32m\033[1m-\033[0m" * 77)
+                    return True
+        except Exception:
+            pass
+        return False
 
-            estring_pos = res.text.find(site["e_string"]) > 0
-
-        except Exception as e:
-            continue
-
-        if res.status_code == 200 and estring_pos:
-            is_any_site_matched = True
-            print("\033[32m-" * 77)
-            print(
-                f"\033[32m[+] \033[1mTarget found\033[0m\033[32m ✓ on:\033[1m{site_name}\033[0m"
-            )
-            print(f"\033[32m[+] Profile URL:\033[1m{uri_check}\033[0m")
-            print("\033[32m\033[1m-\033[0m" * 77)
-
+    # Run all site checks concurrently
+    results = await asyncio.gather(*[check_site(site) for site in sites])
+    
+    is_any_site_matched = any(results)
     if not is_any_site_matched:
         print(
             f"\n\033[1m\033[31mTarget username: [{username}] NOT found on the Masto OSINT Tool servers database!\033[0m"
@@ -234,10 +230,7 @@ def username_search(username):
     return is_any_site_matched
 
 
-# main
 if __name__ == "__main__":
-
-    # argparse arguments
     parser = argparse.ArgumentParser(
         description="Masto OSINT Tool help --> "
         "\033[32m\033[1m[For username]\033[0m: input without @ symbol |"
@@ -257,7 +250,6 @@ if __name__ == "__main__":
         help="\033[32m\033[1m\ninstance (server)\033[0m",
     )
 
-    # args settings
     args = parser.parse_args()
 
     if len(sys.argv) == 1:
@@ -266,29 +258,31 @@ if __name__ == "__main__":
         )
         sys.exit(1)
 
-    instance = args.instance
-    username = args.username
+    async def main(instance, username):
+        if instance:
+            while True:
+                async with aiohttp.ClientSession() as session:
+                    instance_found = await instance_search(instance, session)
 
-    # Loop Instance Search
-    if instance:
-        while True:
-            instance_found = instance_search(instance)
+                yes_no = input("\nCheck another instance? [yes|no]: ")
+                if yes_no.lower() == "no":
+                    break
+                else:
+                    instance = input("type new instance: ")
 
-            yes_no = input("\nCheck another instance? [yes|no]: ")
-            if yes_no.lower() == "no":
-                break
-            else:
-                instance = input("type new instance: ")
+        if username:
+            while True:
+                async with aiohttp.ClientSession() as session:
+                    await asyncio.gather(
+                        username_search_api(username, session),
+                        username_search(username, session)
+                    )
 
-    # Loop target username search across all instances with API and Masto OSINT tool database
-    if username:
-        while True:
-            api_user_found = username_search_api(username)
-            user_found = username_search(username)
+                yes_no = input("\nTry another username? [yes|no]: ")
+                if yes_no.lower() == "no":
+                    break
+                else:
+                    username = input("Type new username: ")
 
-            yes_no = input("\nTry another username? [yes|no]: ")
-            if yes_no.lower() == "no":
-                break
-            else:
-                username = input("Type new username: ")
+    asyncio.run(main(args.instance, args.username))
                 
