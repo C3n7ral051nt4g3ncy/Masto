@@ -775,7 +775,7 @@
         "m_code" : 404,
         "known" : ["News", "wakest"],
         "valid" : true
-       }
+       },
        {
         "name" : "https://pixelfed.social",
         "uri_check" : "https://pixelfed.social/{account}",
@@ -785,7 +785,7 @@
         "m_code" : 404,
         "known" : ["dansup", "kaioluis"],
         "valid" : true
-       }
+       },
        {
         "name" : "https://techhub.social",
         "uri_check" : "https://techhub.social/@{account}",
@@ -795,7 +795,7 @@
         "m_code" : 404,
         "known" : ["nicdex", "alextecplayz"],
         "valid" : true
-       }
+       },
        {
         "name" : "https://mstdn.party",
         "uri_check" : "https://mstdn.party/@{account}",
@@ -805,7 +805,7 @@
         "m_code" : 404,
         "known" : ["staff", "dancoghlan"],
         "valid" : true
-       }
+       },
        {
         "name" : "https://girlcock.club",
         "uri_check" : "https://girlcock.club/@{account}",
@@ -815,7 +815,7 @@
         "m_code" : 404,
         "known" : ["Elizabeth", "luccaflower"],
         "valid" : true
-       }
+       },
        {
         "name" : "https://burma.social",
         "uri_check" : "https://burma.social/@{account}",
@@ -825,7 +825,7 @@
         "m_code" : 404,
         "known" : ["thumyae", "hikaru77"],
         "valid" : true
-       }
+       },
        {
         "name" : "https://rubber.social",
         "uri_check" : "https://rubber.social/@{account}",
@@ -835,7 +835,7 @@
         "m_code" : 404,
         "known" : ["johnnygear", "redheadgay93"],
         "valid" : true
-       }
+       },
        {
         "name" : "https://ohai.social",
         "uri_check" : "https://ohai.social/@{account}",
@@ -845,7 +845,7 @@
         "m_code" : 404,
         "known" : ["resuna", "sonjdol"],
         "valid" : true
-       }
+       },
        {
         "name" : "https://sfba.social",
         "uri_check" : "https://sfba.social/@{account}",
@@ -855,7 +855,7 @@
         "m_code" : 404,
         "known" : ["seb", "LincolnMitchell"],
         "valid" : true
-       }
+       },
        {
         "name" : "https://qoto.org",
         "uri_check" : "https://qoto.org/@{account}",
