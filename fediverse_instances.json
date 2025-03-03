@@ -935,6 +935,16 @@
         "m_code" : 404,
         "known" : ["zabow", "admin"],
         "valid" : true
+       },
+       {
+        "name" : "mastouille",
+        "uri_check" : "https://mastouille.fr/@{account}",
+        "e_code" : 200,
+        "e_string" : "Mastouille</title>",
+        "m_string" : "La page que vous recherchez n",
+        "m_code" : 404,
+        "known" : ["jemesouviens", "premartinpatrick"],
+        "valid" : true
        }
     ]
   }
