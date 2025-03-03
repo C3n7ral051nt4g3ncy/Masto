@@ -860,7 +860,7 @@
         "name" : "mindly.social",
         "uri_check" : "https://mindly.social/@{account}",
         "e_code" : 200,
-        "e_string" : "@mindly.social) - Mindly.Social</title>",
+        "e_string" : "@mindly.social",
         "m_string" : "The page you are looking for isn&#39;t here",
         "m_code" : 404,
         "known" : ["bobonbooks", "HippieScubaSteve"],
