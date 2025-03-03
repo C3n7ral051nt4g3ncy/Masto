@@ -905,6 +905,16 @@
         "m_code" : 404,
         "known" : ["subetha", "cyberman"],
         "valid" : true
+       },
+       {
+        "name" : "tkz.one",
+        "uri_check" : "https://tkz.one/@{account}",
+        "e_code" : 200,
+        "e_string" : "@tkz.one) -",
+        "m_string" : "que estabas buscando no existe",
+        "m_code" : 404,
+        "known" : ["Queenero89", "euitter"],
+        "valid" : true
        }
     ]
   }
