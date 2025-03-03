@@ -875,6 +875,36 @@
         "m_code" : 404,
         "known" : ["memetro", "BigTittyBimbo"],
         "valid" : true
+       },
+       {
+        "name" : "hachyderm.io",
+        "uri_check" : "https://hachyderm.io/@{account}",
+        "e_code" : 200,
+        "e_string" : "@hachyderm.io) - Hachyderm.io</title>",
+        "m_string" : "The page you are looking for isn&#39;t here",
+        "m_code" : 404,
+        "known" : ["slotrak", "voided"],
+        "valid" : true
+       },
+       {
+        "name" : "wxw.moe",
+        "uri_check" : "https://wxw.moe/@{account}",
+        "e_code" : 200,
+        "e_string" : "@wxw.moe) -",
+        "m_string" : "The page you are looking for isn&#39;t here",
+        "m_code" : 404,
+        "known" : ["wxw_moe_status", "KyubikoSama"],
+        "valid" : true
+       },
+       {
+        "name" : "nerdculture",
+        "uri_check" : "https://nerdculture.de/@{account}",
+        "e_code" : 200,
+        "e_string" : @nerdculture.de) - NerdCulture</title>",
+        "m_string" : "The page you are looking for isn&#39;t here",
+        "m_code" : 404,
+        "known" : ["subetha", "cyberman"],
+        "valid" : true
        }
     ]
   }
