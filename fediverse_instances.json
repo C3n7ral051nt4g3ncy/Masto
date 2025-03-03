@@ -900,7 +900,7 @@
         "name" : "nerdculture",
         "uri_check" : "https://nerdculture.de/@{account}",
         "e_code" : 200,
-        "e_string" : @nerdculture.de) - NerdCulture</title>",
+        "e_string" : "@nerdculture.de) - NerdCulture</title>",
         "m_string" : "The page you are looking for isn&#39;t here",
         "m_code" : 404,
         "known" : ["subetha", "cyberman"],
