@@ -179,13 +179,14 @@ async def username_search_api(username, session):
 
 
         print("user's avatar link:", avatar)
-        print(
-            f"\nPreparing to scan for target -->\033[32m\033[1m {username}\033[0m on the \033[32m\033[1m"
-            f"Masto OSINT Tool servers database\033[0m\033[0m\n"
-        )
 
 
 async def username_search(username, session):
+    print(
+        f"\nPreparing to scan for target -->\033[32m\033[1m {username}\033[0m on the \033[32m\033[1m"
+        f"Masto OSINT Tool servers database\033[0m\033[0m\n"
+    )
+    
     headers = {
         "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "accept-language": "en-US;q=0.9,en,q=0,8",
@@ -273,10 +274,11 @@ if __name__ == "__main__":
         if username:
             while True:
                 async with aiohttp.ClientSession() as session:
-                    await asyncio.gather(
-                        username_search_api(username, session),
-                        username_search(username, session)
-                    )
+                    await username_search_api(username, session)
+                    with tqdm(total=10, desc="", bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]') as pbar:
+                        for _ in range(10):
+                            pbar.update(1)
+                    await username_search(username, session)
 
                 yes_no = input("\nTry another username? [yes|no]: ")
                 if yes_no.lower() == "no":
@@ -285,4 +287,3 @@ if __name__ == "__main__":
                     username = input("Type new username: ")
 
     asyncio.run(main(args.instance, args.username))
-                

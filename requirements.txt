@@ -5,3 +5,4 @@ argparse
 w3lib
 aiohttp
 asyncio
+requests
