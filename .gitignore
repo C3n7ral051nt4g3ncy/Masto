@@ -1,4 +1,7 @@
 
+/dist/
+/build/
+/masto.egg-info/
 .DS_Store
 .env
 .vscode
