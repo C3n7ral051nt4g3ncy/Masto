@@ -1,7 +1,8 @@
 import time
 import json
 import argparse
-import requests
+import asyncio
+import aiohttp
 from tqdm import tqdm
 from w3lib.html import remove_tags
 from bs4 import BeautifulSoup
@@ -9,21 +10,28 @@ from bs4 import BeautifulSoup
 
 class Masto:
     def __init__(self):
-        pass
+        self.session = None
     
+    async def __aenter__(self):
+        self.session = aiohttp.ClientSession()
+        return self
+    
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        if self.session:
+            await self.session.close()
+
     # search mastodon instances (servers)
-    def instance_search(self, instance):
+    async def instance_search(self, instance):
         headers = {
             "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "accept-language": "en-US;q=0.9,en;q=0,8",
             "accept-encoding": "gzip, deflate",
-            "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) "
-            "Chrome/104.0.0.0 Safari/537.36",
+            "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
         }
         inst_url = f"https://{instance}/api/v1/instance"
         try:
-            response = requests.request("GET", inst_url, headers=headers)
-            inst_data = json.loads(response.text)
+            async with self.session.get(inst_url, headers=headers) as response:
+                inst_data = await response.json()
         except Exception as e:
             inst_data = {}
 
@@ -75,12 +83,10 @@ class Masto:
             print(f"{key}: {admin_data[key]}")
 
     # search username with Mastodon API
-    def username_search_api(self, username):
+    async def username_search_api(self, username):
         url = f"https://mastodon.social/api/v2/search?q={username}"
-        response = requests.request("GET", url)
-        data = json.loads(response.text)
-        for _ in tqdm(range(10)):
-            time.sleep(0.03)
+        async with self.session.get(url) as response:
+            data = await response.json()
 
         if response.text == ('{"accounts":[],"statuses":[],"hashtags":[]}'):
             print(f"\nTarget username: [{username}] NOT found using the Mastodon API!")
@@ -152,37 +158,40 @@ class Masto:
             print("\033[0muser's avatar link:", avatar)
 
     # username search with the Masto OSINT Tool servers database
-    def username_search(self, username):
-        print("\n")
-        print("Now searching through the Masto OSINT tool instances database\n")
+    async def username_search(self, username):
         headers = {
             "Accept": "text/html, application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "accept-language": "en-US;q=0.9,en;q=0,8",
             "accept-encoding": "gzip, deflate",
-            "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) "
-            "Chrome/104.0.0.0 Safari/537.36",
+            "user-Agent": "Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (HTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
         }
 
-        response = requests.get(
-            "https://raw.githubusercontent.com/C3n7ral051nt4g3ncy/Masto/master/fediverse_instances.json"
-        )
-        sites = response.json()["sites"]
-        is_any_site_matched = False
-        for site in sites:
-            uri_check = site["uri_check"]
-            site_name = site["name"]
-            uri_check = uri_check.format(account=username)
+        async with self.session.get("https://raw.githubusercontent.com/C3n7ral051nt4g3ncy/Masto/master/fediverse_instances.json") as response:
+            text = await response.text()
+            sites = json.loads(text)["sites"]
 
+        async def check_site(site):
+            uri_check = site["uri_check"].format(account=username)
             try:
-                res = requests.get(uri_check, headers=headers)
-                estring_pos = res.text.find(site["e_string"]) > 0
-            except Exception as e:
-                continue
+                async with self.session.get(uri_check, headers=headers) as res:
+                    text = await res.text()
+                    if res.status == 200 and text.find(site["e_string"]) > 0:
+                        return {"found": True, "name": site["name"], "url": uri_check}
+            except Exception:
+                pass
+            return {"found": False}
 
-            if res.status_code == 200 and estring_pos:
-                is_any_site_matched = True
-                print(f"[+] Target found ✓ on: \033[32m\033[1m{site_name}\033[0m")
-                print(f"Profile URL: {uri_check}")
+        results = await asyncio.gather(*[check_site(site) for site in sites])
+        found_targets = [result for result in results if result["found"]]
+        
+        # Display found targets in a consistent format
+        for target in found_targets:
+            print("\n-----------------------------------------------------------------------------")
+            print(f"[+] Target found ✓ on: \033[32m\033[1m{target['name']}\033[0m")
+            print(f"[+] Profile URL: {target['url']}")
+            print("-----------------------------------------------------------------------------\n")
+            
+        is_any_site_matched = len(found_targets) > 0
 
         if not is_any_site_matched:
             print(
@@ -192,7 +201,7 @@ class Masto:
 
 
 # Define main function in the module
-def main():
+async def async_main():
     parser = argparse.ArgumentParser(description="Mastodon OSINT Tool")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-user", help="Username to search")
@@ -200,19 +209,21 @@ def main():
 
     args = parser.parse_args()
 
-    masto = Masto()
+    async with Masto() as masto:
+        if args.instance:
+            instance_data = await masto.instance_search(args.instance)
+            print(json.dumps(instance_data, indent=2))
 
-    if args.instance:
-        instance_data = masto.instance_search(args.instance)
-        print(json.dumps(instance_data, indent=2))
+        if args.user:
+            await masto.username_search_api(args.user)
+            with tqdm(total=10, desc="", bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]') as pbar:
+                for _ in range(10):
+                    pbar.update(1)
+            user_data_db = await masto.username_search(args.user)
+            return user_data_db
 
-    if args.user:
-        user_data_api = masto.username_search_api(args.user)
-        if user_data_api:
-            print(json.dumps(user_data_api, indent=2))
-        user_data_db = masto.username_search(args.user)
-        print(user_data_db)
-
+def main():
+    asyncio.run(async_main())
 
 if __name__ == "__main__":
     main()
