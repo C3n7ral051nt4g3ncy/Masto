@@ -212,6 +212,8 @@ The **same username** can be found across different instances(servers):
 
 ## 🙏 **Thanks**!
 
+<img width="33" src="https://github.com/user-attachments/assets/5ed20401-76dd-49c9-8184-0690607ac7f6"> A great big thanks to [@hippiiee](https://github.com/hippiiee) for radically changing Masto's speed, by adding asynchronous functions to run multiple requests at the same time ! 
+
 <img width="33" src="https://user-images.githubusercontent.com/104733166/201990127-2b7b4f03-ba6a-43fa-a8ef-7ba164685ee2.png"> Huge thanks to [@EduardSchwarzkopf](https://github.com/EduardSchwarzkopf) for all his contributions to **Masto OSINT Tool**.
 
 <img width="33" src="https://user-images.githubusercontent.com/104733166/201990241-3dfd2022-7eab-4c57-88e5-3567376b84fa.png">  Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas. I learn a great deal from him, and he is a great instructor & inspiring person.
