@@ -236,4 +236,4 @@ The **same username** can be found across different instances(servers):
 
 ## **Maltego Transform**
 
-A Maltego transform was made at the beggining of March 2025, and you can find the instructions here: https://github.com/C3n7ral051nt4g3ncy/Masto_Maltego_Transform
+A Maltego transform was made at the beginning of March 2025, and you can find the instructions here: https://github.com/C3n7ral051nt4g3ncy/Masto_Maltego_Transform
