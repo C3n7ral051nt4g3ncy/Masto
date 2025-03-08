@@ -4,6 +4,11 @@
 
 <br>
 
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/C3n7ral051nt4g3ncy/Masto.svg?variant=adaptive)](https://starchart.cc/C3n7ral051nt4g3ncy/Masto)
+
+<br>
+
 <div align="center">
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -11,12 +16,12 @@
 [![security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
 [![MIT License](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/C3n7ral051nt4g3ncy/Masto/blob/master/LICENSE)
 <img src="https://img.shields.io/github/v/tag/C3n7ral051nt4g3ncy/Masto?color=bright%20green&label=Version&logo=github">
-[![HitCount](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto.svg)](http://hits.dwyl.com/C3n7ral051nt4g3ncy/Masto)
 <img src="https://img.shields.io/github/stars/C3n7ral051nt4g3ncy/Masto?color=bright%20green&logo=github">
 <img src="https://img.shields.io/github/forks/C3n7ral051nt4g3ncy/Masto?color=bright%20green&logoColor=white&logo=github">
 <img src="https://img.shields.io/github/last-commit/C3n7ral051nt4g3ncy/MAsto?color=bright%20green&label=Last%20commit">
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
-<a href="https://badge.fury.io/py/masto"><img src="https://badge.fury.io/py/masto.svg" alt="PyPI version" height="18"></a>
+[![PyPI version](https://badge.fury.io/py/masto.svg)](https://badge.fury.io/py/masto)
+
 </div>
 
 <br>
@@ -91,17 +96,17 @@ https://pypi.org/project/masto/
 
 ### Using GitHub
 
-```git clone https://github.com/C3n7ral051nt4g3ncy/Masto```
-<br>
-```cd Masto```
-<br>
-```pip3 install -r requirements.txt```
+```bash
+git clone https://github.com/C3n7ral051nt4g3ncy/Masto.git
+cd masto
+python3 setup.py install
+```
 
 <br>
 
 ## 👨‍💻 **Usage**
 
-### If used PyPI:
+
 - Help:
 ```masto -h``` 
 
@@ -110,18 +115,6 @@ https://pypi.org/project/masto/
 
 - Search for instance
 ```masto -instance {instance_name}```
-
-<br>
-
-### If used GitHub and cloned the repository:
-- Help:
-```python3 masto.py -h```
-
-- Searching for a user
-```python3 masto.py -u {username}```
-
-- Searching for an instance
-```python3 masto.py -i {instance}```
 
 <br>
 
@@ -219,6 +212,8 @@ The **same username** can be found across different instances(servers):
 
 ## 🙏 **Thanks**!
 
+<img width="33" src="https://github.com/user-attachments/assets/5ed20401-76dd-49c9-8184-0690607ac7f6"> A great big thanks to [@hippiiee](https://github.com/hippiiee) for radically changing Masto's speed, by adding asynchronous functions to run multiple requests at the same time ! 
+
 <img width="33" src="https://user-images.githubusercontent.com/104733166/201990127-2b7b4f03-ba6a-43fa-a8ef-7ba164685ee2.png"> Huge thanks to [@EduardSchwarzkopf](https://github.com/EduardSchwarzkopf) for all his contributions to **Masto OSINT Tool**.
 
 <img width="33" src="https://user-images.githubusercontent.com/104733166/201990241-3dfd2022-7eab-4c57-88e5-3567376b84fa.png">  Thanks to [@Webbreacher](https://github.com/WebBreacher) for his input, help and ideas. I learn a great deal from him, and he is a great instructor & inspiring person.
@@ -236,3 +231,9 @@ The **same username** can be found across different instances(servers):
 *Tool made for the OSINT and Cyber community, feel free to contribute  **```code```** .*
 
 <img width="66" src="https://user-images.githubusercontent.com/104733166/200310377-be6d8187-8366-4968-b730-a5c215b310ec.png">
+
+---
+
+## **Maltego Transform**
+
+A Maltego transform was made at the beginning of March 2025, and you can find the instructions here: https://github.com/C3n7ral051nt4g3ncy/Masto_Maltego_Transform
