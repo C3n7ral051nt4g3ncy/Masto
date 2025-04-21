@@ -98,7 +98,7 @@ https://pypi.org/project/masto/
 
 ```bash
 git clone https://github.com/C3n7ral051nt4g3ncy/Masto.git
-cd masto
+cd Masto
 python3 setup.py install
 ```
 
